@@ -12,7 +12,40 @@
 		C587E1B11F4FE07800CC7FF8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C587E1AF1F4FE07800CC7FF8 /* Main.storyboard */; };
 		C587E1B31F4FE07800CC7FF8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C587E1B21F4FE07800CC7FF8 /* Assets.xcassets */; };
 		C587E1B61F4FE07800CC7FF8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C587E1B41F4FE07800CC7FF8 /* LaunchScreen.storyboard */; };
+		C587E1C31F50287B00CC7FF8 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C587E1BD1F50287B00CC7FF8 /* Alamofire.framework */; };
+		C587E1C41F50287B00CC7FF8 /* Alamofire.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C587E1BD1F50287B00CC7FF8 /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		C587E1C51F50287B00CC7FF8 /* AlamofireImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C587E1BE1F50287B00CC7FF8 /* AlamofireImage.framework */; };
+		C587E1C61F50287B00CC7FF8 /* AlamofireImage.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C587E1BE1F50287B00CC7FF8 /* AlamofireImage.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		C587E1C71F50287B00CC7FF8 /* Locksmith.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C587E1BF1F50287B00CC7FF8 /* Locksmith.framework */; };
+		C587E1C81F50287B00CC7FF8 /* Locksmith.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C587E1BF1F50287B00CC7FF8 /* Locksmith.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		C587E1C91F50287B00CC7FF8 /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C587E1C01F50287B00CC7FF8 /* Realm.framework */; };
+		C587E1CA1F50287B00CC7FF8 /* Realm.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C587E1C01F50287B00CC7FF8 /* Realm.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		C587E1CB1F50287B00CC7FF8 /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C587E1C11F50287B00CC7FF8 /* RealmSwift.framework */; };
+		C587E1CC1F50287B00CC7FF8 /* RealmSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C587E1C11F50287B00CC7FF8 /* RealmSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		C587E1CD1F50287B00CC7FF8 /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C587E1C21F50287B00CC7FF8 /* SwiftyJSON.framework */; };
+		C587E1CE1F50287B00CC7FF8 /* SwiftyJSON.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C587E1C21F50287B00CC7FF8 /* SwiftyJSON.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		C587E1D41F5028C400CC7FF8 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = C587E1D31F5028C400CC7FF8 /* libz.tbd */; };
+		C587E1D61F5028CE00CC7FF8 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = C587E1D51F5028CE00CC7FF8 /* libsqlite3.tbd */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		C587E1CF1F50287B00CC7FF8 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				C587E1CA1F50287B00CC7FF8 /* Realm.framework in Embed Frameworks */,
+				C587E1CC1F50287B00CC7FF8 /* RealmSwift.framework in Embed Frameworks */,
+				C587E1CE1F50287B00CC7FF8 /* SwiftyJSON.framework in Embed Frameworks */,
+				C587E1C81F50287B00CC7FF8 /* Locksmith.framework in Embed Frameworks */,
+				C587E1C41F50287B00CC7FF8 /* Alamofire.framework in Embed Frameworks */,
+				C587E1C61F50287B00CC7FF8 /* AlamofireImage.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		C587E1A81F4FE07800CC7FF8 /* Voat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Voat.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -22,6 +55,15 @@
 		C587E1B21F4FE07800CC7FF8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C587E1B51F4FE07800CC7FF8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C587E1B71F4FE07800CC7FF8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C587E1BD1F50287B00CC7FF8 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
+		C587E1BE1F50287B00CC7FF8 /* AlamofireImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AlamofireImage.framework; path = Carthage/Build/iOS/AlamofireImage.framework; sourceTree = "<group>"; };
+		C587E1BF1F50287B00CC7FF8 /* Locksmith.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Locksmith.framework; path = Carthage/Build/iOS/Locksmith.framework; sourceTree = "<group>"; };
+		C587E1C01F50287B00CC7FF8 /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Realm.framework; path = Carthage/Build/iOS/Realm.framework; sourceTree = "<group>"; };
+		C587E1C11F50287B00CC7FF8 /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RealmSwift.framework; path = Carthage/Build/iOS/RealmSwift.framework; sourceTree = "<group>"; };
+		C587E1C21F50287B00CC7FF8 /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = Carthage/Build/iOS/SwiftyJSON.framework; sourceTree = "<group>"; };
+		C587E1D31F5028C400CC7FF8 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
+		C587E1D51F5028CE00CC7FF8 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
+		C587E1DD1F50296600CC7FF8 /* Voat.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = Voat.entitlements; path = Voat/Voat.entitlements; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,6 +71,14 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C587E1D61F5028CE00CC7FF8 /* libsqlite3.tbd in Frameworks */,
+				C587E1D41F5028C400CC7FF8 /* libz.tbd in Frameworks */,
+				C587E1C91F50287B00CC7FF8 /* Realm.framework in Frameworks */,
+				C587E1CB1F50287B00CC7FF8 /* RealmSwift.framework in Frameworks */,
+				C587E1CD1F50287B00CC7FF8 /* SwiftyJSON.framework in Frameworks */,
+				C587E1C71F50287B00CC7FF8 /* Locksmith.framework in Frameworks */,
+				C587E1C31F50287B00CC7FF8 /* Alamofire.framework in Frameworks */,
+				C587E1C51F50287B00CC7FF8 /* AlamofireImage.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -38,7 +88,10 @@
 		C587E19F1F4FE07800CC7FF8 = {
 			isa = PBXGroup;
 			children = (
-				C587E1AA1F4FE07800CC7FF8 /* Voat */,
+				C587E1DD1F50296600CC7FF8 /* Voat.entitlements */,
+				C587E1D01F50289100CC7FF8 /* Shared */,
+				C587E1AA1F4FE07800CC7FF8 /* Voat iOS */,
+				C587E1D11F50289F00CC7FF8 /* Voat macOS */,
 				C587E1A91F4FE07800CC7FF8 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -51,17 +104,97 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		C587E1AA1F4FE07800CC7FF8 /* Voat */ = {
+		C587E1AA1F4FE07800CC7FF8 /* Voat iOS */ = {
+			isa = PBXGroup;
+			children = (
+				C587E1DA1F50291F00CC7FF8 /* Views */,
+				C587E1D91F50291700CC7FF8 /* Controllers */,
+				C587E1D81F50290D00CC7FF8 /* Storyboards */,
+				C587E1D71F50290100CC7FF8 /* Supporting Files */,
+				C587E1D21F5028C400CC7FF8 /* Frameworks */,
+			);
+			name = "Voat iOS";
+			path = Voat;
+			sourceTree = "<group>";
+		};
+		C587E1D01F50289100CC7FF8 /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				C587E1DC1F50294F00CC7FF8 /* Helpers */,
+				C587E1DB1F50294800CC7FF8 /* Models */,
+			);
+			name = Shared;
+			sourceTree = "<group>";
+		};
+		C587E1D11F50289F00CC7FF8 /* Voat macOS */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "Voat macOS";
+			sourceTree = "<group>";
+		};
+		C587E1D21F5028C400CC7FF8 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C587E1BD1F50287B00CC7FF8 /* Alamofire.framework */,
+				C587E1BE1F50287B00CC7FF8 /* AlamofireImage.framework */,
+				C587E1BF1F50287B00CC7FF8 /* Locksmith.framework */,
+				C587E1C01F50287B00CC7FF8 /* Realm.framework */,
+				C587E1C11F50287B00CC7FF8 /* RealmSwift.framework */,
+				C587E1C21F50287B00CC7FF8 /* SwiftyJSON.framework */,
+				C587E1D51F5028CE00CC7FF8 /* libsqlite3.tbd */,
+				C587E1D31F5028C400CC7FF8 /* libz.tbd */,
+			);
+			name = Frameworks;
+			path = ..;
+			sourceTree = "<group>";
+		};
+		C587E1D71F50290100CC7FF8 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				C587E1B21F4FE07800CC7FF8 /* Assets.xcassets */,
+				C587E1B71F4FE07800CC7FF8 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		C587E1D81F50290D00CC7FF8 /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				C587E1AF1F4FE07800CC7FF8 /* Main.storyboard */,
+				C587E1B41F4FE07800CC7FF8 /* LaunchScreen.storyboard */,
+			);
+			name = Storyboards;
+			sourceTree = "<group>";
+		};
+		C587E1D91F50291700CC7FF8 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
 				C587E1AB1F4FE07800CC7FF8 /* AppDelegate.swift */,
 				C587E1AD1F4FE07800CC7FF8 /* ViewController.swift */,
-				C587E1AF1F4FE07800CC7FF8 /* Main.storyboard */,
-				C587E1B21F4FE07800CC7FF8 /* Assets.xcassets */,
-				C587E1B41F4FE07800CC7FF8 /* LaunchScreen.storyboard */,
-				C587E1B71F4FE07800CC7FF8 /* Info.plist */,
 			);
-			path = Voat;
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		C587E1DA1F50291F00CC7FF8 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		C587E1DB1F50294800CC7FF8 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		C587E1DC1F50294F00CC7FF8 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Helpers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -74,6 +207,8 @@
 				C587E1A41F4FE07800CC7FF8 /* Sources */,
 				C587E1A51F4FE07800CC7FF8 /* Frameworks */,
 				C587E1A61F4FE07800CC7FF8 /* Resources */,
+				C587E1CF1F50287B00CC7FF8 /* Embed Frameworks */,
+				C587E1DE1F50299000CC7FF8 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -98,6 +233,11 @@
 						CreatedOnToolsVersion = 8.3.3;
 						DevelopmentTeam = ZLUJC28Y9H;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.Keychain = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -131,6 +271,28 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		C587E1DE1F50299000CC7FF8 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/Alamofire.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/AlamofireImage.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/Locksmith.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/Realm.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/RealmSwift.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/SwiftyJSON.framework",
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		C587E1A41F4FE07800CC7FF8 /* Sources */ = {
@@ -263,12 +425,19 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Voat/Voat.entitlements;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = ZLUJC28Y9H;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = Voat/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.rightmeow.voat;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
+				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Debug;
 		};
@@ -276,12 +445,19 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Voat/Voat.entitlements;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = ZLUJC28Y9H;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = Voat/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.rightmeow.voat;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
+				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Release;
 		};
@@ -304,6 +480,7 @@
 				C587E1BC1F4FE07800CC7FF8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
