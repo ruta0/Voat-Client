@@ -1,0 +1,5 @@
+github "Alamofire/Alamofire" "4.5.0"
+github "Alamofire/AlamofireImage" "3.2.0"
+github "SwiftyJSON/SwiftyJSON" "3.1.4"
+github "matthewpalmer/Locksmith" "3.0.0"
+github "realm/realm-cocoa" "v2.10.0"
