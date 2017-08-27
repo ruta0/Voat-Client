@@ -31,7 +31,7 @@ class PostCell: UITableViewCell {
                     DispatchQueue.main.async {
                         self.postImageView.image = image
                         self.postImageView.fadeIn()
-                        self.renderImageType()
+                        self.renderMediaTypeImageView()
                     }
                 } else {
                     Alamofire.request(post.thumbnail_url, method: .get).responseImage(completionHandler: { response in
@@ -44,7 +44,7 @@ class PostCell: UITableViewCell {
                             imageCache.add(image, withIdentifier: post.thumbnail_url)
                             self.postImageView.image = image
                             self.postImageView.fadeIn()
-                            self.renderImageType()
+                            self.renderMediaTypeImageView()
                         }
                     })
                 }
@@ -67,11 +67,11 @@ class PostCell: UITableViewCell {
     @IBOutlet weak var commentsLabel: UILabel!
     @IBOutlet weak var separatorView: UIView!
 
-    func renderImageType() {
-        if !post!.postGif_url.isEmpty {
-            self.mediaTypeImageView.image = #imageLiteral(resourceName: "gif")
-        } else if !post!.postVideo_url.isEmpty {
+    func renderMediaTypeImageView() {
+        if !post!.postVideo_url.isEmpty {
             self.mediaTypeImageView.image = #imageLiteral(resourceName: "video")
+        } else if !post!.postGif_url.isEmpty {
+            self.mediaTypeImageView.image = #imageLiteral(resourceName: "gif")
         }
     }
 

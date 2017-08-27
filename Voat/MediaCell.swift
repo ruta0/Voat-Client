@@ -12,6 +12,8 @@ import AlamofireImage
 
 class MediaCell: UITableViewCell {
 
+    // MARK: - API
+
     var post: Post? {
         didSet {
             updateCell()
@@ -27,7 +29,7 @@ class MediaCell: UITableViewCell {
             self.sharesLabel.text = String(describing: post.sharesCount)
             self.postDescriptionLabel.text = post.postDescription
             if !post.postImage_url.isEmpty {
-                self.installPostImageView(url: post.postImage_url)
+                self.renderPostImageView(url: post.postImage_url)
             } else if !post.postGif_url.isEmpty {
                 // implement this
             } else if !post.postVideo_url.isEmpty {
@@ -42,7 +44,6 @@ class MediaCell: UITableViewCell {
     @IBOutlet weak var userLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var mediaView: UIView!
-    @IBOutlet weak var mediaTypeImageView: UIImageView!
     @IBOutlet weak var upvoteImageView: UIImageView!
     @IBOutlet weak var upvotesLabel: UILabel!
     @IBOutlet weak var commentImageView: UIImageView!
@@ -51,23 +52,44 @@ class MediaCell: UITableViewCell {
     @IBOutlet weak var sharesLabel: UILabel!
     @IBOutlet weak var postDescriptionLabel: UILabel!
 
-    func renderImageType() {
-        if !post!.postGif_url.isEmpty {
-            self.mediaTypeImageView.image = #imageLiteral(resourceName: "gif")
-        } else if !post!.postVideo_url.isEmpty {
-            self.mediaTypeImageView.image = #imageLiteral(resourceName: "video")
-        }
-    }
+    lazy var postImageView: UIImageView = {
+        let view = UIImageView(frame: self.mediaView.frame)
+        view.backgroundColor = Color.black
+        view.contentMode = UIViewContentMode.scaleAspectFill
+        view.clipsToBounds = true
+        return view
+    }()
 
-    func installPostImageView(url: String) {
-        let imageView = UIImageView(frame: self.mediaView.frame)
-        imageView.bounds = self.mediaView.bounds
+    lazy var postGifView: UIImageView = {
+        let view = UIImageView(frame: self.mediaView.frame)
+        view.backgroundColor = Color.black
+        view.contentMode = UIViewContentMode.scaleAspectFill
+        view.clipsToBounds = true
+        return view
+    }()
+
+    lazy var postVideoView: UIView = {
+        let view = UIView(frame: self.mediaView.frame)
+        view.backgroundColor = Color.black
+        view.contentMode = UIViewContentMode.scaleAspectFill
+        view.clipsToBounds = true
+        return view
+    }()
+
+    lazy var mediaTypeImageView: UIImageView = {
+        let view = UIImageView(frame: CGRect(x: 0, y: 0, width: 20, height: 20))
+        view.contentMode = UIViewContentMode.scaleAspectFill
+        view.clipsToBounds = true
+        return view
+    }()
+
+    func renderPostImageView(url: String) {
         let imageCache = AutoPurgingImageCache(memoryCapacity: 100_000_000, preferredMemoryUsageAfterPurge: 60_000_000)
         if let image = imageCache.image(withIdentifier: url) {
             DispatchQueue.main.async {
-                imageView.image = image
-                imageView.fadeIn()
-                self.renderImageType()
+                self.postImageView.image = image
+                self.mediaView.addSubview(self.postImageView)
+                self.postImageView.fadeIn()
             }
         } else {
             Alamofire.request(url, method: HTTPMethod.get).responseImage(completionHandler: { response in
@@ -76,13 +98,21 @@ class MediaCell: UITableViewCell {
                         print("failed to parse image from response")
                         return
                     }
-                    imageView.af_setImage(withURL: URL(string: url)!, placeholderImage: #imageLiteral(resourceName: "Image Placeholder"))
+                    self.postImageView.af_setImage(withURL: URL(string: url)!, placeholderImage: #imageLiteral(resourceName: "Image Placeholder"))
                     imageCache.add(image, withIdentifier: url)
-                    imageView.image = image
-                    imageView.fadeIn()
-                    self.renderImageType()
+                    self.postImageView.image = image
+                    self.mediaView.addSubview(self.postImageView)
+                    self.postImageView.fadeIn()
                 }
             })
+        }
+    }
+
+    func renderMediaTypeImageView() {
+        if !post!.postGif_url.isEmpty {
+            self.mediaTypeImageView.image = #imageLiteral(resourceName: "gif")
+        } else if !post!.postVideo_url.isEmpty {
+            self.mediaTypeImageView.image = #imageLiteral(resourceName: "video")
         }
     }
 
@@ -99,6 +129,8 @@ class MediaCell: UITableViewCell {
         self.shareImageView.tintColor = Color.lightGray
         self.postDescriptionLabel.textColor = Color.white
     }
+
+    // MARK: - Lifecycle
 
     override func awakeFromNib() {
         super.awakeFromNib()

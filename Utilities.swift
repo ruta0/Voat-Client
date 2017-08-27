@@ -16,7 +16,7 @@ import Foundation
     typealias Color = NSColor
 #endif
 
-// MARK: - Error handler
+// MARK: - Error
 
 func trace(file: String, function: String, line: Int) -> String {
     let trace = "\n" + "file: " + file + "\n" + "function: " + function + "\n" + "line: " + String(describing: line) + "\n"
@@ -42,6 +42,8 @@ extension Color {
 
 }
 
+// MARK: - Date
+
 extension String {
 
     /// dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
@@ -54,8 +56,6 @@ extension String {
     }
     
 }
-
-// MARK: - Human readable date
 
 extension NSDate {
 
@@ -79,7 +79,9 @@ extension NSDate {
 
 }
 
-extension UIImageView {
+// MARK: - UI
+
+extension UIView {
 
     func fadeIn() {
         self.alpha = 0.0
@@ -87,11 +89,30 @@ extension UIImageView {
             self.alpha = 1
         }, completion: nil)
     }
-    
+
+    func flashWithDelay(delay: TimeInterval) {
+        UIView.animate(withDuration: 0.3, delay: 0, options: UIViewAnimationOptions.curveEaseIn, animations: {
+            self.alpha = 1.0
+        }) { (completed: Bool) in
+            if completed == true {
+                UIView.animate(withDuration: 0.3, delay: delay, options: UIViewAnimationOptions.curveEaseIn, animations: {
+                    self.alpha = 0.0
+                }, completion: nil)
+            }
+        }
+    }
+
+    func vibrate(disposition: CGFloat, repeatCount: Float, duration: CFTimeInterval) {
+        let animation = CABasicAnimation(keyPath: "position")
+        animation.duration = duration
+        animation.repeatCount = repeatCount
+        animation.autoreverses = true
+        animation.fromValue = NSValue(cgPoint: CGPoint(x: self.center.x - disposition, y: self.center.y))
+        animation.toValue = NSValue(cgPoint: CGPoint(x: self.center.x + disposition, y: self.center.y))
+        layer.add(animation, forKey: "position")
+    }
+
 }
-
-
-
 
 
 
