@@ -16,8 +16,26 @@ class PostsViewController: UIViewController, UITableViewDelegate, UITableViewDat
 
     var realmPosts: Results<Post>? {
         didSet {
-            self.tableView.reloadData()
+            tableViewReload()
         }
+    }
+
+    // MARK: - UIRefreshControl
+
+    func handleRefresh() {
+        DispatchQueue.main.async {
+            self.refreshControl?.beginRefreshing()
+        }
+        webServiceManager?.fetchPosts(endpoint: WebServiceConfigurations.endpoint.hot)
+    }
+
+    var refreshControl: UIRefreshControl?
+
+    private func setupUIRefreshControl() {
+        refreshControl = UIRefreshControl()
+        refreshControl!.tintColor = Color.white
+        refreshControl?.addTarget(self, action: #selector(handleRefresh), for: UIControlEvents.valueChanged)
+        self.tableView.refreshControl = refreshControl
     }
 
     // MARK: - PersistentContainerDelegate
@@ -54,9 +72,12 @@ class PostsViewController: UIViewController, UITableViewDelegate, UITableViewDat
     }
 
     func webServiceDidFetchPosts(posts: [NSDictionary]) {
+        DispatchQueue.main.async {
+            self.refreshControl?.endRefreshing()
+        }
         var realmPosts = [Post]()
         for post in posts {
-            if let post_id = post["video_id"] as? String, let thumbnail_url = post["thumbnail_url"] as? String, let postTitle = post["title"] as? String, let postDescription = post["description"] as? String, let created_at = post["date_created"] as? String, let updated_at = post["date_stored"] as? String, let upvotesCount = post["likes_count"] as? Int, let commentsCount = post["comment_count"] as? Int {
+            if let post_id = post["video_id"] as? String, let thumbnail_url = post["thumbnail_url"] as? String, let postTitle = post["title"] as? String, let postDescription = post["description"] as? String, let created_at = post["date_created"] as? String, let updated_at = post["date_stored"] as? String, let upvotesCount = post["likes_count"] as? Int, let commentsCount = post["comment_count"] as? Int, let sharesCount = post["share_count"] as? Int {
                 let realmPost = Post()
                 realmPost.post_id = post_id
                 realmPost.thumbnail_url = thumbnail_url
@@ -66,6 +87,18 @@ class PostsViewController: UIViewController, UITableViewDelegate, UITableViewDat
                 realmPost.created_at = created_at.toSystemDate()
                 realmPost.updated_at = updated_at.toSystemDate()
                 realmPost.upvotesCount = upvotesCount
+                realmPost.sharesCount = sharesCount
+
+                if let postImage_url = post["thumbnail_url"] as? String {
+                    realmPost.postImage_url = postImage_url
+                }
+                if let postVideo_url = post["complete_url"] as? String {
+                    realmPost.postVideo_url = postVideo_url
+                }
+                if let postGif_url = post["thumbnail_gif_url"] as? String {
+                    realmPost.postGif_url = postGif_url
+                }
+
                 realmPosts.append(realmPost)
             }
         }
@@ -81,6 +114,12 @@ class PostsViewController: UIViewController, UITableViewDelegate, UITableViewDat
 
     @IBOutlet weak var tableView: UITableView!
 
+    func tableViewReload() {
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+        }
+    }
+
     private func setupTableView() {
         tableView.backgroundColor = Color.inkBlack
     }
@@ -90,13 +129,21 @@ class PostsViewController: UIViewController, UITableViewDelegate, UITableViewDat
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTableView()
+        setupUIRefreshControl()
         setupWebServiceDelegate()
         setupPersistentContainerDelegate()
+        webServiceManager?.fetchPosts(endpoint: WebServiceConfigurations.endpoint.hot)
+
+//        print(realmManager?.pathForContainer())
     }
 
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        webServiceManager?.fetchPosts(endpoint: WebServiceConfigurations.endpoint.hot)
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == seguePostCellToPostVC {
+            guard let postViewController = segue.destination as? PostViewController else { return }
+            if let selectedCell = sender as? PostCell, let selectedIndexPath = tableView.indexPath(for: selectedCell) {
+                postViewController.selectedRealmPost = self.realmPosts?[selectedIndexPath.row]
+            }
+        }
     }
 
     // MARK: - UITableViewDataSource
@@ -115,18 +162,6 @@ class PostsViewController: UIViewController, UITableViewDelegate, UITableViewDat
         }
         postCell.post = realmPosts?[indexPath.row]
         return postCell
-    }
-
-    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        return false
-    }
-
-    func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCellEditingStyle {
-        return UITableViewCellEditingStyle.none
-    }
-
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        // implement this
     }
 
     // MARK: - UITableViewDelegate

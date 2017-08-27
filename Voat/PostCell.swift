@@ -31,6 +31,7 @@ class PostCell: UITableViewCell {
                     DispatchQueue.main.async {
                         self.postImageView.image = image
                         self.postImageView.fadeIn()
+                        self.renderImageType()
                     }
                 } else {
                     Alamofire.request(post.thumbnail_url, method: .get).responseImage(completionHandler: { response in
@@ -43,6 +44,7 @@ class PostCell: UITableViewCell {
                             imageCache.add(image, withIdentifier: post.thumbnail_url)
                             self.postImageView.image = image
                             self.postImageView.fadeIn()
+                            self.renderImageType()
                         }
                     })
                 }
@@ -58,11 +60,20 @@ class PostCell: UITableViewCell {
     @IBOutlet weak var userLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var postImageView: UIImageView!
+    @IBOutlet weak var mediaTypeImageView: UIImageView!
     @IBOutlet weak var upvoteImageView: UIImageView!
     @IBOutlet weak var upvotesLabel: UILabel!
     @IBOutlet weak var commentImageView: UIImageView!
     @IBOutlet weak var commentsLabel: UILabel!
     @IBOutlet weak var separatorView: UIView!
+
+    func renderImageType() {
+        if !post!.postGif_url.isEmpty {
+            self.mediaTypeImageView.image = #imageLiteral(resourceName: "gif")
+        } else if !post!.postVideo_url.isEmpty {
+            self.mediaTypeImageView.image = #imageLiteral(resourceName: "video")
+        }
+    }
 
     private func setupCell() {
         self.backgroundColor = Color.midNightBlack
