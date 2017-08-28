@@ -34,7 +34,6 @@ class MediaCell: UITableViewCell {
             self.postDescriptionLabel.text = post.postDescription
             if !post.postGif_url.isEmpty {
                 self.renderPostGifImageView(url: post.postGif_url)
-
             } else if !post.postImage_url.isEmpty {
                 self.renderPostImageView(url: post.postImage_url)
             }

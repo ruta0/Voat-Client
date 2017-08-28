@@ -9,7 +9,7 @@
 import UIKit
 import RealmSwift
 
-class PostViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class PostViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, WebServiceDelegate {
 
     // MARK: - API
 
@@ -19,6 +19,23 @@ class PostViewController: UIViewController, UITableViewDelegate, UITableViewData
         didSet {
             self.tableView.reloadData() // reload the section == 1 only
         }
+    }
+
+    // MARK: - WebServiceDelegate
+
+    var webServiceManager: WebServerManager?
+
+    func webServiceDidErr(error: Error) {
+        print(error.localizedDescription)
+    }
+
+    func webServiceDidFetchComments(comments: [NSDictionary]) {
+        print(comments)
+    }
+
+    private func setupWebServiceDelegate() {
+        webServiceManager = WebServerManager()
+        webServiceManager!.delegate = self
     }
 
     // MARK: - UITableView
@@ -38,6 +55,9 @@ class PostViewController: UIViewController, UITableViewDelegate, UITableViewData
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTableView()
+        setupWebServiceDelegate()
+        guard let post_id = selectedRealmPost?.post_id else { return }
+        webServiceManager?.fetchComments(endpoint: WebServiceConfigurations.endpoint.posts.post, selectedPostID: post_id)
     }
 
     // MARK: - UITableViewDelegate
@@ -67,9 +87,35 @@ class PostViewController: UIViewController, UITableViewDelegate, UITableViewData
             }
             mediaCell.post = self.selectedRealmPost
             return mediaCell
+        } else if indexPath.section == 1 {
+            guard let commentCell = tableView.dequeueReusableCell(withIdentifier: CommentCell.id, for: indexPath) as? CommentCell else {
+                return UITableViewCell()
+            }
+            commentCell.comment = self.realmComments?[indexPath.row]
+            return commentCell
         } else {
             return UITableViewCell()
         }
     }
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -59,6 +59,20 @@ class WebServerManager: NSObject {
         }
     }
 
+    func fetchComments(endpoint: String, selectedPostID: String) {
+        let url = configureURL(endpoint: endpoint) + "/" + selectedPostID + "/" + WebServiceConfigurations.endpoint.comments.comments
+        Alamofire.request(url, method: HTTPMethod.get, parameters: WebServiceConfigurations.paramater.platform, encoding: URLEncoding.queryString, headers: WebServiceConfigurations.header.authorization).responseJSON { response in
+            switch response.result {
+            case .success:
+                if let jsonValue = response.result.value as? [String : Any], let comments = jsonValue["comments"] as? [NSDictionary] {
+                    self.delegate?.webServiceDidFetchComments(comments: comments)
+                }
+            case .failure(let error):
+                self.delegate?.webServiceDidErr(error: error)
+            }
+        }
+    }
+
     // MARK: - Create
 
     // MARK: - Update
@@ -76,8 +90,14 @@ struct WebServiceConfigurations {
     static let baseURL = "https://api.vid.me"
 
     struct endpoint {
-        static let hot = "/videos/hot"
-        static let new = "/videos/new"
+        struct posts {
+            static let hot = "/videos/hot"
+            static let new = "/videos/new"
+            static let post = "/videos"
+        }
+        struct comments {
+            static let comments = "/comments"
+        }
     }
 
     struct paramater {

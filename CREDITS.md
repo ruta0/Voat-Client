@@ -6,3 +6,4 @@
 - Video Camera by Jony from the Noun Project
 - Share by Numero Uno from the Noun Project
 - Cloud Error by Viktor Ostrovsky from the Noun Project
+- more by il Capitano from the Noun Project

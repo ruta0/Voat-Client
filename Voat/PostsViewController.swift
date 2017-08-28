@@ -26,7 +26,7 @@ class PostsViewController: UIViewController, UITableViewDelegate, UITableViewDat
         DispatchQueue.main.async {
             self.refreshControl?.beginRefreshing()
         }
-        webServiceManager?.fetchPosts(endpoint: WebServiceConfigurations.endpoint.hot)
+        webServiceManager?.fetchPosts(endpoint: WebServiceConfigurations.endpoint.posts.hot)
     }
 
     var refreshControl: UIRefreshControl?
@@ -132,9 +132,9 @@ class PostsViewController: UIViewController, UITableViewDelegate, UITableViewDat
         setupUIRefreshControl()
         setupWebServiceDelegate()
         setupPersistentContainerDelegate()
-        webServiceManager?.fetchPosts(endpoint: WebServiceConfigurations.endpoint.hot)
+        webServiceManager?.fetchPosts(endpoint: WebServiceConfigurations.endpoint.posts.hot)
 
-        print(realmManager?.pathForContainer())
+//        print(realmManager?.pathForContainer())
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
