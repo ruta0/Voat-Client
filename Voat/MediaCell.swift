@@ -32,10 +32,9 @@ class MediaCell: UITableViewCell {
             self.commentsLabel.text = String(describing: post.commentsCount)
             self.sharesLabel.text = String(describing: post.sharesCount)
             self.postDescriptionLabel.text = post.postDescription
-            if !post.postVideo_url.isEmpty {
-                self.renderPostVideoView(url: post.postVideo_url)
-            } else if !post.postGif_url.isEmpty {
+            if !post.postGif_url.isEmpty {
                 self.renderPostGifImageView(url: post.postGif_url)
+
             } else if !post.postImage_url.isEmpty {
                 self.renderPostImageView(url: post.postImage_url)
             }
@@ -77,6 +76,13 @@ class MediaCell: UITableViewCell {
         view.backgroundColor = Color.orange
         view.contentMode = UIViewContentMode.scaleAspectFill
         view.clipsToBounds = true
+        return view
+    }()
+
+    lazy var postVideoWebView: UIWebView = {
+        let view = UIWebView(frame: self.mediaView.frame)
+        view.backgroundColor = Color.black
+        view.contentMode = UIViewContentMode.scaleAspectFill
         return view
     }()
 
@@ -140,7 +146,6 @@ class MediaCell: UITableViewCell {
     }
 
     func renderPostVideoView(url: String) {
-        print(url)
         let url = URL(fileURLWithPath: url)
         self.avPlayer = AVPlayer(url: url)
         let avPlayerLayer = AVPlayerLayer(player: self.avPlayer)

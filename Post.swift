@@ -16,7 +16,7 @@ class Post: Object {
     dynamic var postDescription = ""
     dynamic var thumbnail_url = ""
     dynamic var postImage_url = ""
-    dynamic var postVideo_url = ""
+    dynamic var postVideo_url = "" // Video is not supported at the moment
     dynamic var postGif_url = ""
     dynamic var created_at = NSDate()
     dynamic var updated_at = NSDate()

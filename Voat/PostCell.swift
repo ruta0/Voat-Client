@@ -37,6 +37,8 @@ class PostCell: UITableViewCell {
                     Alamofire.request(post.thumbnail_url, method: .get).responseImage(completionHandler: { response in
                         DispatchQueue.main.async {
                             guard let image = response.result.value else {
+                                self.postImageView.image = #imageLiteral(resourceName: "error")
+                                self.postImageView.contentMode = .center
                                 print("failed to parse image from response")
                                 return
                             }
@@ -68,10 +70,10 @@ class PostCell: UITableViewCell {
     @IBOutlet weak var separatorView: UIView!
 
     func renderMediaTypeImageView() {
-        if !post!.postVideo_url.isEmpty {
-            self.mediaTypeImageView.image = #imageLiteral(resourceName: "video")
-        } else if !post!.postGif_url.isEmpty {
+        if !post!.postGif_url.isEmpty {
             self.mediaTypeImageView.image = #imageLiteral(resourceName: "gif")
+        } else if !post!.postImage_url.isEmpty {
+            self.mediaTypeImageView.image = #imageLiteral(resourceName: "image")
         }
     }
 
