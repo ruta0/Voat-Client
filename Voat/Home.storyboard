@@ -61,11 +61,11 @@
                                                         </stackView>
                                                     </subviews>
                                                 </stackView>
-                                                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="VR5-Z0-Vew">
+                                                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="VR5-Z0-Vew">
                                                     <rect key="frame" x="16" y="349" width="343" height="15"/>
                                                     <subviews>
                                                         <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="YEW-Em-U4k">
-                                                            <rect key="frame" x="0.0" y="0.0" width="155" height="15"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="167.5" height="15"/>
                                                             <subviews>
                                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="upvote" translatesAutoresizingMaskIntoConstraints="NO" id="Bee-MK-oib">
                                                                     <rect key="frame" x="0.0" y="0.0" width="15" height="15"/>
@@ -76,7 +76,7 @@
                                                                     </constraints>
                                                                 </imageView>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="upvotes" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xhy-6H-Nei">
-                                                                    <rect key="frame" x="23" y="0.0" width="132" height="15"/>
+                                                                    <rect key="frame" x="23" y="0.0" width="144.5" height="15"/>
                                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleFootnote"/>
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
@@ -84,7 +84,7 @@
                                                             </subviews>
                                                         </stackView>
                                                         <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="vSI-k8-bmQ">
-                                                            <rect key="frame" x="163" y="0.0" width="180" height="15"/>
+                                                            <rect key="frame" x="175.5" y="0.0" width="167.5" height="15"/>
                                                             <subviews>
                                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="chats" translatesAutoresizingMaskIntoConstraints="NO" id="9ix-Uj-7r9">
                                                                     <rect key="frame" x="0.0" y="0.0" width="15" height="15"/>
@@ -95,7 +95,7 @@
                                                                     </constraints>
                                                                 </imageView>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="comments" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2EU-z4-fPs">
-                                                                    <rect key="frame" x="23" y="0.0" width="157" height="15"/>
+                                                                    <rect key="frame" x="23" y="0.0" width="144.5" height="15"/>
                                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleFootnote"/>
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
@@ -118,7 +118,7 @@
                                                         <constraint firstAttribute="height" constant="8" id="pDQ-bf-iWN"/>
                                                     </constraints>
                                                 </view>
-                                                <imageView userInteractionEnabled="NO" alpha="0.75" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="B8d-27-ckE">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="B8d-27-ckE">
                                                     <rect key="frame" x="339" y="68" width="20" height="20"/>
                                                     <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                     <constraints>
@@ -415,7 +415,7 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <stackView opaque="NO" contentMode="scaleToFill" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="K6n-bb-0pK">
-                                                            <rect key="frame" x="0.0" y="52" width="146.5" height="15"/>
+                                                            <rect key="frame" x="0.0" y="52" width="175.5" height="15"/>
                                                             <subviews>
                                                                 <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pqV-k0-JPj">
                                                                     <rect key="frame" x="0.0" y="0.0" width="15" height="15"/>
@@ -423,19 +423,32 @@
                                                                         <constraint firstAttribute="height" constant="15" id="1mF-me-5bW"/>
                                                                         <constraint firstAttribute="width" constant="15" id="gPU-8a-bPo"/>
                                                                     </constraints>
-                                                                    <state key="normal" backgroundImage="upvote"/>
+                                                                    <state key="normal" backgroundImage="upvote">
+                                                                        <color key="titleShadowColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                                                    </state>
                                                                     <connections>
                                                                         <action selector="handleUpvote:" destination="gFO-3L-4Ej" eventType="touchUpInside" id="jFP-mj-Zof"/>
                                                                     </connections>
                                                                 </button>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="upvotesLabel" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jXc-W6-epF">
-                                                                    <rect key="frame" x="31" y="0.0" width="24.5" height="15"/>
+                                                                    <rect key="frame" x="31" y="0.0" width="22.5" height="15"/>
                                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleFootnote"/>
                                                                     <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
+                                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9de-UG-tx9">
+                                                                    <rect key="frame" x="69.5" y="0.0" width="15" height="15"/>
+                                                                    <constraints>
+                                                                        <constraint firstAttribute="width" constant="15" id="Hbj-7V-Zir"/>
+                                                                        <constraint firstAttribute="height" constant="15" id="dh9-9x-LaE"/>
+                                                                    </constraints>
+                                                                    <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                                                    <state key="normal" backgroundImage="downvote">
+                                                                        <color key="titleShadowColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                                                    </state>
+                                                                </button>
                                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8bC-Dp-zgo">
-                                                                    <rect key="frame" x="71.5" y="0.0" width="44" height="15"/>
+                                                                    <rect key="frame" x="100.5" y="0.0" width="44" height="15"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="width" constant="44" id="Mqf-85-aCD"/>
                                                                         <constraint firstAttribute="height" constant="15" id="crF-G3-GFQ"/>
@@ -443,19 +456,22 @@
                                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleFootnote"/>
                                                                     <state key="normal" title="Reply">
                                                                         <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                                                        <color key="titleShadowColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                                     </state>
                                                                     <connections>
                                                                         <action selector="handleReply:" destination="gFO-3L-4Ej" eventType="touchUpInside" id="vFr-VD-dQP"/>
                                                                     </connections>
                                                                 </button>
                                                                 <button opaque="NO" clipsSubviews="YES" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8iJ-21-edB">
-                                                                    <rect key="frame" x="131.5" y="0.0" width="15" height="15"/>
+                                                                    <rect key="frame" x="160.5" y="0.0" width="15" height="15"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="height" constant="15" id="cZK-Qe-ZSy"/>
                                                                         <constraint firstAttribute="width" constant="15" id="xbg-Ad-RpH"/>
                                                                     </constraints>
                                                                     <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                                                    <state key="normal" backgroundImage="more"/>
+                                                                    <state key="normal" backgroundImage="more">
+                                                                        <color key="titleShadowColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                                                    </state>
                                                                     <connections>
                                                                         <action selector="handleMore:" destination="gFO-3L-4Ej" eventType="touchUpInside" id="zVE-nP-6lu"/>
                                                                     </connections>
@@ -479,6 +495,7 @@
                                         <connections>
                                             <outlet property="commentDescriptionLabel" destination="gnH-w6-zWy" id="dza-cr-D1c"/>
                                             <outlet property="dateLabel" destination="9Xz-4t-6fr" id="KTE-jz-Lg3"/>
+                                            <outlet property="downvoteButton" destination="9de-UG-tx9" id="mOQ-Ag-Z3o"/>
                                             <outlet property="moreButton" destination="8iJ-21-edB" id="EMg-1S-Svs"/>
                                             <outlet property="replyButton" destination="8bC-Dp-zgo" id="4MY-yv-jcA"/>
                                             <outlet property="upvoteButton" destination="pqV-k0-JPj" id="UzG-hV-6C9"/>
@@ -536,6 +553,7 @@
     </scenes>
     <resources>
         <image name="chats" width="25" height="25"/>
+        <image name="downvote" width="50" height="50"/>
         <image name="home" width="25" height="25"/>
         <image name="more" width="50" height="50"/>
         <image name="share" width="50" height="50"/>

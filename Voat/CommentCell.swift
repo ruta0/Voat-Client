@@ -43,6 +43,7 @@ class CommentCell: UITableViewCell {
     @IBOutlet weak var commentDescriptionLabel: UILabel!
     @IBOutlet weak var upvoteButton: UIButton!
     @IBOutlet weak var upvotesLabel: UILabel!
+    @IBOutlet weak var downvoteButton: UIButton!
     @IBOutlet weak var replyButton: UIButton!
     @IBOutlet weak var moreButton: UIButton!
 
@@ -53,6 +54,7 @@ class CommentCell: UITableViewCell {
         self.commentDescriptionLabel.textColor = Color.white
         self.upvotesLabel.textColor = Color.lightGray
         self.upvoteButton.tintColor = Color.lightGray
+        self.downvoteButton.tintColor = Color.lightGray
         self.replyButton.tintColor = Color.lightGray
         self.moreButton.tintColor = Color.lightGray
     }

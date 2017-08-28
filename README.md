@@ -25,7 +25,7 @@ cd {your-project-directory}
 Step 2 - Install project dependencies
 
 ```
-carthage update
+carthage checkout
 ```
 
 Step 3 - [optional]
