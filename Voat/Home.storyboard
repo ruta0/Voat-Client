@@ -414,8 +414,8 @@
                                                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="K6n-bb-0pK">
-                                                            <rect key="frame" x="0.0" y="52" width="336" height="15"/>
+                                                        <stackView opaque="NO" contentMode="scaleToFill" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="K6n-bb-0pK">
+                                                            <rect key="frame" x="0.0" y="52" width="146.5" height="15"/>
                                                             <subviews>
                                                                 <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pqV-k0-JPj">
                                                                     <rect key="frame" x="0.0" y="0.0" width="15" height="15"/>
@@ -429,13 +429,17 @@
                                                                     </connections>
                                                                 </button>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="upvotesLabel" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jXc-W6-epF">
-                                                                    <rect key="frame" x="23" y="0.0" width="78" height="15"/>
+                                                                    <rect key="frame" x="31" y="0.0" width="24.5" height="15"/>
                                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleFootnote"/>
                                                                     <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8bC-Dp-zgo">
-                                                                    <rect key="frame" x="109" y="0.0" width="204" height="15"/>
+                                                                    <rect key="frame" x="71.5" y="0.0" width="44" height="15"/>
+                                                                    <constraints>
+                                                                        <constraint firstAttribute="width" constant="44" id="Mqf-85-aCD"/>
+                                                                        <constraint firstAttribute="height" constant="15" id="crF-G3-GFQ"/>
+                                                                    </constraints>
                                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleFootnote"/>
                                                                     <state key="normal" title="Reply">
                                                                         <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
@@ -445,7 +449,7 @@
                                                                     </connections>
                                                                 </button>
                                                                 <button opaque="NO" clipsSubviews="YES" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8iJ-21-edB">
-                                                                    <rect key="frame" x="321" y="0.0" width="15" height="15"/>
+                                                                    <rect key="frame" x="131.5" y="0.0" width="15" height="15"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="height" constant="15" id="cZK-Qe-ZSy"/>
                                                                         <constraint firstAttribute="width" constant="15" id="xbg-Ad-RpH"/>

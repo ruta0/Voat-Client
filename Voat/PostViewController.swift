@@ -9,7 +9,7 @@
 import UIKit
 import RealmSwift
 
-class PostViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, WebServiceDelegate {
+class PostViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, WebServiceDelegate, PersistentContainerDelegate {
 
     // MARK: - API
 
@@ -17,8 +17,33 @@ class PostViewController: UIViewController, UITableViewDelegate, UITableViewData
 
     var realmComments: Results<Comment>? {
         didSet {
-            self.tableView.reloadData() // reload the section == 1 only
+            self.tableViewReload() // reload the section == 1 only
         }
+    }
+
+    // MARK: - PersistentContainerDelegate
+
+    var realmManager: RealmManager?
+
+    func containerDidErr(error: Error) {
+        print(error.localizedDescription)
+    }
+
+    func containerDidUpdateObjects() {
+        realmManager?.fetchComments(sortedKeyPath: "upvotesCount", ascending: false)
+    }
+
+    func containerDidFetchComments(comments: Results<Comment>?) {
+        guard let fetchedComments = comments else {
+            print(trace(file: #file, function: #function, line: #line))
+            return
+        }
+        self.realmComments = fetchedComments
+    }
+
+    private func setupPersistentContainerDelegate() {
+        realmManager = RealmManager()
+        realmManager!.delegate = self
     }
 
     // MARK: - WebServiceDelegate
@@ -30,7 +55,20 @@ class PostViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
 
     func webServiceDidFetchComments(comments: [NSDictionary]) {
-        print(comments)
+        var realmComments = [Comment]()
+        for comment in comments {
+            if let comment_id = comment["comment_id"] as? String, let text = comment["body"] as? String, let created_at = comment["date_created"] as? String, let updated_at = comment["date_created"] as? String, let commentsCount = comment["comment_count"] as? Int, let upvotesCount = comment["score"] as? Int {
+                let realmComment = Comment()
+                realmComment.comment_id = comment_id
+                realmComment.text = text
+                realmComment.created_at = created_at.toSystemDate()
+                realmComment.updated_at = updated_at.toSystemDate()
+                realmComment.commentsCount = commentsCount
+                realmComment.upvotesCount = upvotesCount
+                realmComments.append(realmComment)
+            }
+        }
+        realmManager?.updateObjects(objects: realmComments)
     }
 
     private func setupWebServiceDelegate() {
@@ -46,6 +84,12 @@ class PostViewController: UIViewController, UITableViewDelegate, UITableViewData
         }
     }
 
+    func tableViewReload() {
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+        }
+    }
+
     private func setupTableView() {
         tableView.backgroundColor = Color.inkBlack
     }
@@ -56,6 +100,7 @@ class PostViewController: UIViewController, UITableViewDelegate, UITableViewData
         super.viewDidLoad()
         setupTableView()
         setupWebServiceDelegate()
+        setupPersistentContainerDelegate()
         guard let post_id = selectedRealmPost?.post_id else { return }
         webServiceManager?.fetchComments(endpoint: WebServiceConfigurations.endpoint.posts.post, selectedPostID: post_id)
     }
@@ -73,7 +118,11 @@ class PostViewController: UIViewController, UITableViewDelegate, UITableViewData
     // MARK: - UITableViewDataSource
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        if section == 0 {
+            return 1
+        } else {
+            return realmComments?.count ?? 0
+        }
     }
 
     func numberOfSections(in tableView: UITableView) -> Int {

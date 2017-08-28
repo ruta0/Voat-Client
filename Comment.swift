@@ -16,6 +16,10 @@ class Comment: Object {
     dynamic var created_at = NSDate()
     dynamic var updated_at = NSDate()
     dynamic var commentsCount: Int = 0
+    dynamic var upvotesCount: Int = 0
+    dynamic var commentImage_url = ""
+    dynamic var commentVideo_url = "" // Video is not supported at the moment
+    dynamic var commentGif_url = ""
 
     dynamic var username = ""
 
@@ -26,7 +30,7 @@ class Comment: Object {
         return "comment_id"
     }
 
-    convenience init(comment_id: String, username: String, text: String, created_at: NSDate, updated_at: NSDate, commentsCount: Int) {
+    convenience init(comment_id: String, username: String, text: String, created_at: NSDate, updated_at: NSDate, commentsCount: Int, upvotesCount: Int) {
         self.init()
         self.comment_id = comment_id
         self.username = username
@@ -34,6 +38,7 @@ class Comment: Object {
         self.updated_at = updated_at
         self.commentsCount = commentsCount
         self.text = text
+        self.upvotesCount = upvotesCount
     }
 
 }

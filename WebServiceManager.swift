@@ -60,7 +60,7 @@ class WebServerManager: NSObject {
     }
 
     func fetchComments(endpoint: String, selectedPostID: String) {
-        let url = configureURL(endpoint: endpoint) + "/" + selectedPostID + "/" + WebServiceConfigurations.endpoint.comments.comments
+        let url = configureURL(endpoint: endpoint) + "/" + selectedPostID + WebServiceConfigurations.endpoint.comments.comments
         Alamofire.request(url, method: HTTPMethod.get, parameters: WebServiceConfigurations.paramater.platform, encoding: URLEncoding.queryString, headers: WebServiceConfigurations.header.authorization).responseJSON { response in
             switch response.result {
             case .success:
@@ -93,7 +93,7 @@ struct WebServiceConfigurations {
         struct posts {
             static let hot = "/videos/hot"
             static let new = "/videos/new"
-            static let post = "/videos"
+            static let post = "/video"
         }
         struct comments {
             static let comments = "/comments"

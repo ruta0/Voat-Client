@@ -17,7 +17,11 @@ class CommentCell: UITableViewCell {
     }
 
     private func updateCell() {
-        // implement this
+        if let comment = comment {
+            self.dateLabel.text = comment.created_at.toRelativeDate()
+            self.commentDescriptionLabel.text = comment.text
+            self.upvotesLabel.text = String(describing: comment.upvotesCount)
+        }
     }
 
     @IBAction func handleUpvote(_ sender: UIButton) {
