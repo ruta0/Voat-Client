@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C51CE5A41F53C863007463C1 /* FLAnimatedImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C51CE5A31F53C863007463C1 /* FLAnimatedImage.framework */; };
+		C51CE5A51F53C863007463C1 /* FLAnimatedImage.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C51CE5A31F53C863007463C1 /* FLAnimatedImage.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		C52340A81F5166BA008F6960 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = C52340A71F5166BA008F6960 /* Utilities.swift */; };
 		C52340AA1F516B1F008F6960 /* PostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C52340A91F516B1F008F6960 /* PostCell.swift */; };
 		C52340AC1F516E67008F6960 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = C52340AB1F516E67008F6960 /* Post.swift */; };
@@ -49,6 +51,7 @@
 				C587E1CC1F50287B00CC7FF8 /* RealmSwift.framework in Embed Frameworks */,
 				C587E1CE1F50287B00CC7FF8 /* SwiftyJSON.framework in Embed Frameworks */,
 				C587E1C81F50287B00CC7FF8 /* Locksmith.framework in Embed Frameworks */,
+				C51CE5A51F53C863007463C1 /* FLAnimatedImage.framework in Embed Frameworks */,
 				C587E1C41F50287B00CC7FF8 /* Alamofire.framework in Embed Frameworks */,
 				C587E1C61F50287B00CC7FF8 /* AlamofireImage.framework in Embed Frameworks */,
 			);
@@ -58,6 +61,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		C51CE5A31F53C863007463C1 /* FLAnimatedImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FLAnimatedImage.framework; path = Carthage/Build/iOS/FLAnimatedImage.framework; sourceTree = "<group>"; };
 		C52340A71F5166BA008F6960 /* Utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 		C52340A91F516B1F008F6960 /* PostCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostCell.swift; sourceTree = "<group>"; };
 		C52340AB1F516E67008F6960 /* Post.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
@@ -92,6 +96,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C587E1D61F5028CE00CC7FF8 /* libsqlite3.tbd in Frameworks */,
+				C51CE5A41F53C863007463C1 /* FLAnimatedImage.framework in Frameworks */,
 				C587E1D41F5028C400CC7FF8 /* libz.tbd in Frameworks */,
 				C587E1C91F50287B00CC7FF8 /* Realm.framework in Frameworks */,
 				C587E1CB1F50287B00CC7FF8 /* RealmSwift.framework in Frameworks */,
@@ -156,6 +161,7 @@
 		C587E1D21F5028C400CC7FF8 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				C51CE5A31F53C863007463C1 /* FLAnimatedImage.framework */,
 				C587E1BD1F50287B00CC7FF8 /* Alamofire.framework */,
 				C587E1BE1F50287B00CC7FF8 /* AlamofireImage.framework */,
 				C587E1BF1F50287B00CC7FF8 /* Locksmith.framework */,
@@ -315,6 +321,7 @@
 				"$(SRCROOT)/Carthage/Build/iOS/Realm.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/RealmSwift.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/SwiftyJSON.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/FLAnimatedImage.framework",
 			);
 			outputPaths = (
 			);

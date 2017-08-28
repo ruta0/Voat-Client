@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import ImageIO
 
 #if os(iOS)
     import UIKit
@@ -79,7 +80,7 @@ extension NSDate {
 
 }
 
-// MARK: - UI
+// MARK: - Animation
 
 extension UIView {
 

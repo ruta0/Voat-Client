@@ -9,6 +9,8 @@
 import UIKit
 import Alamofire
 import AlamofireImage
+import AVFoundation
+import FLAnimatedImage
 
 class MediaCell: UITableViewCell {
 
@@ -20,6 +22,8 @@ class MediaCell: UITableViewCell {
         }
     }
 
+    var avPlayer: AVPlayer?
+
     private func updateCell() {
         if let post = post {
             self.postTitleLabel.text = post.postTitle
@@ -28,12 +32,12 @@ class MediaCell: UITableViewCell {
             self.commentsLabel.text = String(describing: post.commentsCount)
             self.sharesLabel.text = String(describing: post.sharesCount)
             self.postDescriptionLabel.text = post.postDescription
-            if !post.postImage_url.isEmpty {
-                self.renderPostImageView(url: post.postImage_url)
+            if !post.postVideo_url.isEmpty {
+                self.renderPostVideoView(url: post.postVideo_url)
             } else if !post.postGif_url.isEmpty {
-                // implement this
-            } else if !post.postVideo_url.isEmpty {
-                // implement this
+                self.renderPostGifImageView(url: post.postGif_url)
+            } else if !post.postImage_url.isEmpty {
+                self.renderPostImageView(url: post.postImage_url)
             }
         }
     }
@@ -60,8 +64,8 @@ class MediaCell: UITableViewCell {
         return view
     }()
 
-    lazy var postGifView: UIImageView = {
-        let view = UIImageView(frame: self.mediaView.frame)
+    lazy var postGifImageView: FLAnimatedImageView = {
+        let view = FLAnimatedImageView(frame: self.mediaView.frame)
         view.backgroundColor = Color.black
         view.contentMode = UIViewContentMode.scaleAspectFill
         view.clipsToBounds = true
@@ -70,7 +74,7 @@ class MediaCell: UITableViewCell {
 
     lazy var postVideoView: UIView = {
         let view = UIView(frame: self.mediaView.frame)
-        view.backgroundColor = Color.black
+        view.backgroundColor = Color.orange
         view.contentMode = UIViewContentMode.scaleAspectFill
         view.clipsToBounds = true
         return view
@@ -108,11 +112,53 @@ class MediaCell: UITableViewCell {
         }
     }
 
-    func renderMediaTypeImageView() {
-        if !post!.postGif_url.isEmpty {
-            self.mediaTypeImageView.image = #imageLiteral(resourceName: "gif")
-        } else if !post!.postVideo_url.isEmpty {
-            self.mediaTypeImageView.image = #imageLiteral(resourceName: "video")
+    func renderPostGifImageView(url: String) {
+        Alamofire.request(url, method: HTTPMethod.get).responseData(completionHandler: { response in
+            switch response.result {
+            case .success:
+                guard let data = response.result.value else {
+                    DispatchQueue.main.async {
+                        self.postGifImageView.image = #imageLiteral(resourceName: "error")
+                        self.postGifImageView.contentMode = .center
+                        self.mediaView.addSubview(self.postGifImageView)
+                    }
+                    return
+                }
+                DispatchQueue.main.async {
+                    self.postGifImageView.animatedImage = FLAnimatedImage(animatedGIFData: data, optimalFrameCacheSize: 100_000, predrawingEnabled: true)
+                    self.mediaView.addSubview(self.postGifImageView)
+                }
+            case .failure(let error):
+                print(error.localizedDescription)
+                DispatchQueue.main.async {
+                    self.postGifImageView.image = #imageLiteral(resourceName: "error")
+                    self.postGifImageView.contentMode = .center
+                    self.mediaView.addSubview(self.postGifImageView)
+                }
+            }
+        })
+    }
+
+    func renderPostVideoView(url: String) {
+        print(url)
+        let url = URL(fileURLWithPath: url)
+        self.avPlayer = AVPlayer(url: url)
+        let avPlayerLayer = AVPlayerLayer(player: self.avPlayer)
+        avPlayerLayer.frame = self.postVideoView.frame
+        self.postVideoView.layer.addSublayer(avPlayerLayer)
+        self.mediaView.addSubview(self.postVideoView)
+        self.playVideo()
+    }
+
+    func playVideo() {
+        DispatchQueue.main.async {
+            self.avPlayer?.play()
+        }
+    }
+
+    func pauseVideo() {
+        DispatchQueue.main.async {
+            self.avPlayer?.pause()
         }
     }
 

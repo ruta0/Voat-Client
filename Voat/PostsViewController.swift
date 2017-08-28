@@ -134,7 +134,7 @@ class PostsViewController: UIViewController, UITableViewDelegate, UITableViewDat
         setupPersistentContainerDelegate()
         webServiceManager?.fetchPosts(endpoint: WebServiceConfigurations.endpoint.hot)
 
-//        print(realmManager?.pathForContainer())
+        print(realmManager?.pathForContainer())
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
