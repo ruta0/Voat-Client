@@ -40,8 +40,7 @@ I use [agvtool](https://developer.apple.com/library/content/qa/qa1827/_index.htm
 
 * **rightmeow**
 
-See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
-* **wow such empty**
+See also the list of [contributors](CREDITS.md) who helped in this project.
 
 ## License
 
