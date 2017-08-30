@@ -12,25 +12,25 @@ import Alamofire
 protocol WebServiceDelegate {
     func webServiceDidErr(error: Error)
     // posts
-    func webServiceDidFetchPosts(posts: [NSDictionary])
+    func webServiceDidFetchPosts(posts: Any)
     func webServiceDidCreatePost(post: NSDictionary)
     func webServiceDidUpdatePost(post: NSDictionary)
     func webServiceDidDeletePost()
     // user(s)
     // comments
-    func webServiceDidFetchComments(comments: [NSDictionary])
+    func webServiceDidFetchComments(comments: Any)
     // ...
 }
 
 extension WebServiceDelegate {
     // posts
-    func webServiceDidFetchPosts(posts: [NSDictionary]) {}
+    func webServiceDidFetchPosts(posts: Any) {}
     func webServiceDidCreatePost(post: NSDictionary) {}
     func webServiceDidUpdatePost(post: NSDictionary) {}
     func webServiceDidDeletePost() {}
     // user(s)
     // comments
-    func webServiceDidFetchComments(comments: [NSDictionary]) {}
+    func webServiceDidFetchComments(comments: Any) {}
     // ...
 }
 
@@ -49,10 +49,8 @@ class WebServerManager: NSObject {
         let url = configureURL(endpoint: endpoint)
         Alamofire.request(url, method: HTTPMethod.get, parameters: WebServiceConfigurations.paramater.platform, encoding: URLEncoding.queryString, headers: WebServiceConfigurations.header.authorization).responseJSON { response in
             switch response.result {
-            case .success:
-                if let jsonValue = response.result.value as? [String : Any], let posts = jsonValue["videos"] as? [NSDictionary] {
-                    self.delegate?.webServiceDidFetchPosts(posts: posts)
-                }
+            case .success(let value):
+                self.delegate?.webServiceDidFetchPosts(posts: value)
             case .failure(let error):
                 self.delegate?.webServiceDidErr(error: error)
             }
@@ -63,10 +61,8 @@ class WebServerManager: NSObject {
         let url = configureURL(endpoint: endpoint) + "/" + selectedPostID + WebServiceConfigurations.endpoint.comments.comments
         Alamofire.request(url, method: HTTPMethod.get, parameters: WebServiceConfigurations.paramater.platform, encoding: URLEncoding.queryString, headers: WebServiceConfigurations.header.authorization).responseJSON { response in
             switch response.result {
-            case .success:
-                if let jsonValue = response.result.value as? [String : Any], let comments = jsonValue["comments"] as? [NSDictionary] {
-                    self.delegate?.webServiceDidFetchComments(comments: comments)
-                }
+            case .success(let value):
+                self.delegate?.webServiceDidFetchComments(comments: value)
             case .failure(let error):
                 self.delegate?.webServiceDidErr(error: error)
             }

@@ -40,6 +40,7 @@
 		C587E1CE1F50287B00CC7FF8 /* SwiftyJSON.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C587E1C21F50287B00CC7FF8 /* SwiftyJSON.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		C587E1D41F5028C400CC7FF8 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = C587E1D31F5028C400CC7FF8 /* libz.tbd */; };
 		C587E1D61F5028CE00CC7FF8 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = C587E1D51F5028CE00CC7FF8 /* libsqlite3.tbd */; };
+		C587EB521F55996300459B2A /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C587EB511F55996300459B2A /* Settings.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -92,6 +93,7 @@
 		C587E1D31F5028C400CC7FF8 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		C587E1D51F5028CE00CC7FF8 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 		C587E1DD1F50296600CC7FF8 /* Voat.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = Voat.entitlements; path = Voat/Voat.entitlements; sourceTree = "<group>"; };
+		C587EB511F55996300459B2A /* Settings.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Settings.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -193,6 +195,7 @@
 			children = (
 				C587E1AF1F4FE07800CC7FF8 /* Main.storyboard */,
 				C53A38851F53ECD600A388DD /* Home.storyboard */,
+				C587EB511F55996300459B2A /* Settings.storyboard */,
 				C587E1B41F4FE07800CC7FF8 /* LaunchScreen.storyboard */,
 			);
 			name = Storyboards;
@@ -310,6 +313,7 @@
 				C587E1B31F4FE07800CC7FF8 /* Assets.xcassets in Resources */,
 				C587E1B11F4FE07800CC7FF8 /* Main.storyboard in Resources */,
 				C53A38861F53ECD600A388DD /* Home.storyboard in Resources */,
+				C587EB521F55996300459B2A /* Settings.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

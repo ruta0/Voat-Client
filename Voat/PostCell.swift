@@ -105,3 +105,26 @@ class PostCell: UITableViewCell {
     }
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

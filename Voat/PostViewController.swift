@@ -8,6 +8,7 @@
 
 import UIKit
 import RealmSwift
+import SwiftyJSON
 
 class PostViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, WebServiceDelegate, PersistentContainerDelegate {
 
@@ -26,7 +27,7 @@ class PostViewController: UIViewController, UITableViewDelegate, UITableViewData
     var realmManager: RealmManager?
 
     func containerDidErr(error: Error) {
-        print(error.localizedDescription)
+        self.scheduleNavigationPrompt(message: error.localizedDescription, duration: 4)
     }
 
     func containerDidUpdateObjects() {
@@ -51,22 +52,21 @@ class PostViewController: UIViewController, UITableViewDelegate, UITableViewData
     var webServiceManager: WebServerManager?
 
     func webServiceDidErr(error: Error) {
-        print(error.localizedDescription)
+        self.scheduleNavigationPrompt(message: error.localizedDescription, duration: 4)
     }
 
-    func webServiceDidFetchComments(comments: [NSDictionary]) {
+    func webServiceDidFetchComments(comments: Any) {
         var realmComments = [Comment]()
-        for comment in comments {
-            if let comment_id = comment["comment_id"] as? String, let text = comment["body"] as? String, let created_at = comment["date_created"] as? String, let updated_at = comment["date_created"] as? String, let commentsCount = comment["comment_count"] as? Int, let upvotesCount = comment["score"] as? Int {
-                let realmComment = Comment()
-                realmComment.comment_id = comment_id
-                realmComment.text = text
-                realmComment.created_at = created_at.toSystemDate()
-                realmComment.updated_at = updated_at.toSystemDate()
-                realmComment.commentsCount = commentsCount
-                realmComment.upvotesCount = upvotesCount
-                realmComments.append(realmComment)
-            }
+        let jsonComments = JSON(comments)["comments"]
+        for jsonComment in jsonComments {
+            let realmComment = Comment()
+            realmComment.comment_id = jsonComment.1["comment_id"].stringValue
+            realmComment.text = jsonComment.1["body"].stringValue
+            realmComment.created_at = jsonComment.1["date_created"].stringValue.toSystemDate()
+            realmComment.updated_at = jsonComment.1["date_created"].stringValue.toSystemDate()
+            realmComment.commentsCount = jsonComment.1["comment_count"].intValue
+            realmComment.upvotesCount = jsonComment.1["score"].intValue
+            realmComments.append(realmComment)
         }
         realmManager?.updateObjects(objects: realmComments)
     }
@@ -74,6 +74,26 @@ class PostViewController: UIViewController, UITableViewDelegate, UITableViewData
     private func setupWebServiceDelegate() {
         webServiceManager = WebServerManager()
         webServiceManager!.delegate = self
+    }
+
+    // MARK: - UINavigationController
+
+    private var timer: Timer?
+
+    func scheduleNavigationPrompt(message: String, duration: TimeInterval) {
+        DispatchQueue.main.async {
+            self.navigationItem.prompt = message
+            self.timer = Timer.scheduledTimer(timeInterval: duration, target: self, selector: #selector(self.removeNavigationPrompt), userInfo: nil, repeats: false)
+            self.timer?.tolerance = 5
+        }
+    }
+
+    @objc private func removeNavigationPrompt() {
+        if navigationItem.prompt != nil {
+            DispatchQueue.main.async {
+                self.navigationItem.prompt = nil
+            }
+        }
     }
 
     // MARK: - UITableView

@@ -34,7 +34,7 @@ class PostsViewController: UIViewController, UITableViewDelegate, UITableViewDat
     private func setupUIRefreshControl() {
         refreshControl = UIRefreshControl()
         refreshControl!.tintColor = Color.white
-        refreshControl?.addTarget(self, action: #selector(handleRefresh), for: UIControlEvents.valueChanged)
+        refreshControl!.addTarget(self, action: #selector(handleRefresh), for: UIControlEvents.valueChanged)
         self.tableView.refreshControl = refreshControl
     }
 
@@ -43,7 +43,7 @@ class PostsViewController: UIViewController, UITableViewDelegate, UITableViewDat
     var realmManager: RealmManager?
 
     func containerDidErr(error: Error) {
-        print(error.localizedDescription)
+        self.scheduleNavigationPrompt(message: error.localizedDescription, duration: 4)
     }
 
     func containerDidUpdateObjects() {
@@ -68,39 +68,34 @@ class PostsViewController: UIViewController, UITableViewDelegate, UITableViewDat
     var webServiceManager: WebServerManager?
 
     func webServiceDidErr(error: Error) {
-        print(error.localizedDescription)
+        self.scheduleNavigationPrompt(message: error.localizedDescription, duration: 4)
     }
 
-    func webServiceDidFetchPosts(posts: [NSDictionary]) {
-        DispatchQueue.main.async {
-            self.refreshControl?.endRefreshing()
+    func webServiceDidFetchPosts(posts: Any) {
+        if refreshControl != nil {
+            if self.refreshControl!.isRefreshing {
+                DispatchQueue.main.async {
+                    self.refreshControl!.endRefreshing()
+                }
+            }
         }
         var realmPosts = [Post]()
-        for post in posts {
-            if let post_id = post["video_id"] as? String, let thumbnail_url = post["thumbnail_url"] as? String, let postTitle = post["title"] as? String, let postDescription = post["description"] as? String, let created_at = post["date_created"] as? String, let updated_at = post["date_stored"] as? String, let upvotesCount = post["likes_count"] as? Int, let commentsCount = post["comment_count"] as? Int, let sharesCount = post["share_count"] as? Int {
-                let realmPost = Post()
-                realmPost.post_id = post_id
-                realmPost.thumbnail_url = thumbnail_url
-                realmPost.postTitle = postTitle
-                realmPost.postDescription = postDescription
-                realmPost.commentsCount = commentsCount
-                realmPost.created_at = created_at.toSystemDate()
-                realmPost.updated_at = updated_at.toSystemDate()
-                realmPost.upvotesCount = upvotesCount
-                realmPost.sharesCount = sharesCount
-
-                if let postImage_url = post["thumbnail_url"] as? String {
-                    realmPost.postImage_url = postImage_url
-                }
-                if let postVideo_url = post["complete_url"] as? String {
-                    realmPost.postVideo_url = postVideo_url
-                }
-                if let postGif_url = post["thumbnail_gif_url"] as? String {
-                    realmPost.postGif_url = postGif_url
-                }
-
-                realmPosts.append(realmPost)
-            }
+        let jsonPosts = JSON(posts)["videos"]
+        for jsonPost in jsonPosts {
+            let realmPost = Post()
+            realmPost.post_id = jsonPost.1["video_id"].stringValue
+            realmPost.thumbnail_url = jsonPost.1["thumbnail_url"].stringValue
+            realmPost.postTitle = jsonPost.1["title"].stringValue
+            realmPost.postDescription = jsonPost.1["description"].stringValue
+            realmPost.commentsCount = jsonPost.1["comment_count"].intValue
+            realmPost.created_at = jsonPost.1["date_created"].stringValue.toSystemDate()
+            realmPost.updated_at = jsonPost.1["date_stored"].stringValue.toSystemDate()
+            realmPost.upvotesCount = jsonPost.1["likes_count"].intValue
+            realmPost.sharesCount = jsonPost.1["share_count"].intValue
+            realmPost.postImage_url = jsonPost.1["thumbnail_url"].stringValue
+            realmPost.postVideo_url = jsonPost.1["complete_url"].stringValue
+            realmPost.postGif_url = jsonPost.1["thumbnail_gif_url"].stringValue
+            realmPosts.append(realmPost)
         }
         realmManager?.updateObjects(objects: realmPosts)
     }
@@ -108,6 +103,26 @@ class PostsViewController: UIViewController, UITableViewDelegate, UITableViewDat
     private func setupWebServiceDelegate() {
         webServiceManager = WebServerManager()
         webServiceManager!.delegate = self
+    }
+
+    // MARK: - UINavigationController
+
+    private var timer: Timer?
+
+    func scheduleNavigationPrompt(message: String, duration: TimeInterval) {
+        DispatchQueue.main.async {
+            self.navigationItem.prompt = message
+            self.timer = Timer.scheduledTimer(timeInterval: duration, target: self, selector: #selector(self.removeNavigationPrompt), userInfo: nil, repeats: false)
+            self.timer?.tolerance = 5
+        }
+    }
+
+    @objc private func removeNavigationPrompt() {
+        if navigationItem.prompt != nil {
+            DispatchQueue.main.async {
+                self.navigationItem.prompt = nil
+            }
+        }
     }
 
     // MARK: - UITableView

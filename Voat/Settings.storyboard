@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="RyA-D2-k8t">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Settings-->
+        <scene sceneID="BaE-W0-6zl">
+            <objects>
+                <viewController id="B5K-XK-VjV" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="EWf-8t-cnd"/>
+                        <viewControllerLayoutGuide type="bottom" id="TAf-B2-RJG"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="JtX-0o-FPZ">
+                        <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="251" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ihJ-7K-Smp">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="554"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="251" id="Y12-d4-wfj">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="251"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Y12-d4-wfj" id="6F6-E0-6rq">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="251"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" red="0.13725490200000001" green="0.13725490200000001" blue="0.13725490200000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="ihJ-7K-Smp" firstAttribute="top" secondItem="EWf-8t-cnd" secondAttribute="bottom" id="2Of-xX-nTt"/>
+                            <constraint firstItem="TAf-B2-RJG" firstAttribute="top" secondItem="ihJ-7K-Smp" secondAttribute="bottom" id="3jk-3u-1nO"/>
+                            <constraint firstAttribute="trailing" secondItem="ihJ-7K-Smp" secondAttribute="trailing" id="KUH-5J-NCn"/>
+                            <constraint firstItem="ihJ-7K-Smp" firstAttribute="leading" secondItem="JtX-0o-FPZ" secondAttribute="leading" id="OIo-cF-9JT"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Settings" id="Mmf-4V-EdR">
+                        <barButtonItem key="backBarButtonItem" title=" " id="2jI-61-5oF"/>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="yhy-BW-k0E" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1160.8" y="111.99400299850076"/>
+        </scene>
+        <!--Settings-->
+        <scene sceneID="yYa-19-40f">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="RyA-D2-k8t" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Settings" image="settings" id="GzP-CJ-1NQ"/>
+                    <toolbarItems/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="mj3-LQ-euP">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="0.13725490200000001" green="0.13725490200000001" blue="0.13725490200000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="B5K-XK-VjV" kind="relationship" relationship="rootViewController" id="s8Z-AJ-dbG"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="KBK-RQ-qye" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="221.59999999999999" y="111.99400299850076"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="settings" width="25" height="25"/>
+    </resources>
+</document>

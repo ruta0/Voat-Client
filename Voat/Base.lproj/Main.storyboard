@@ -13,12 +13,21 @@
         <scene sceneID="tOC-hf-X9Z">
             <objects>
                 <viewControllerPlaceholder storyboardName="Home" id="VNV-Sm-eUi" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="VA1-bd-R9J"/>
-                    <navigationItem key="navigationItem" id="zTF-Yx-Vp9"/>
+                    <tabBarItem key="tabBarItem" title="Home" image="home" id="VA1-bd-R9J"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rKe-r7-1Rb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="900" y="475"/>
+        </scene>
+        <!--Settings-->
+        <scene sceneID="4Ss-3X-v8Z">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Settings" id="zZ1-zi-ISG" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Settings" image="settings" id="tcN-dl-b1a"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="o0Q-Fl-StO" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="881" y="814"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="QLi-Ra-ozg">
@@ -34,6 +43,7 @@
                     </tabBar>
                     <connections>
                         <segue destination="VNV-Sm-eUi" kind="relationship" relationship="viewControllers" id="pyn-xu-OUj"/>
+                        <segue destination="zZ1-zi-ISG" kind="relationship" relationship="viewControllers" id="pYN-P1-9RQ"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8Fm-1z-qMz" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -41,4 +51,8 @@
             <point key="canvasLocation" x="5.5999999999999996" y="777.66116941529242"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="home" width="25" height="25"/>
+        <image name="settings" width="25" height="25"/>
+    </resources>
 </document>
