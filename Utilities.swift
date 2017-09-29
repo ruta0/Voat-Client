@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import ImageIO
 
 #if os(iOS)
     import UIKit
@@ -115,7 +114,20 @@ extension UIView {
 
 }
 
+// MARK: - App Sandbox
 
+extension FileManager {
+
+    func pathToSandbox() -> String {
+        if let path = FileManager.default.urls(for: FileManager.SearchPathDirectory.documentDirectory, in: FileManager.SearchPathDomainMask.userDomainMask).first?.path {
+            return path
+        } else {
+            let message = "application sandbox has not been setup yet"
+            return message
+        }
+    }
+
+}
 
 
 

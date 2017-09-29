@@ -49,7 +49,7 @@ class PostViewController: UIViewController, UITableViewDelegate, UITableViewData
 
     // MARK: - WebServiceDelegate
 
-    var webServiceManager: WebServerManager?
+    var webServiceManager: WebServiceManager?
 
     func webServiceDidErr(error: Error) {
         self.scheduleNavigationPrompt(message: error.localizedDescription, duration: 4)
@@ -72,7 +72,7 @@ class PostViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
 
     private func setupWebServiceDelegate() {
-        webServiceManager = WebServerManager()
+        webServiceManager = WebServiceManager()
         webServiceManager!.delegate = self
     }
 

@@ -11,17 +11,17 @@ import RealmSwift
 
 class Comment: Object {
 
-    dynamic var comment_id = ""
-    dynamic var text = ""
-    dynamic var created_at = NSDate()
-    dynamic var updated_at = NSDate()
-    dynamic var commentsCount: Int = 0
-    dynamic var upvotesCount: Int = 0
-    dynamic var commentImage_url = ""
-    dynamic var commentVideo_url = "" // Video is not supported at the moment
-    dynamic var commentGif_url = ""
+    @objc dynamic var comment_id = ""
+    @objc dynamic var text = ""
+    @objc dynamic var created_at = NSDate()
+    @objc dynamic var updated_at = NSDate()
+    @objc dynamic var commentsCount: Int = 0
+    @objc dynamic var upvotesCount: Int = 0
+    @objc dynamic var commentImage_url = ""
+    @objc dynamic var commentVideo_url = "" // Video is not supported at the moment
+    @objc dynamic var commentGif_url = ""
 
-    dynamic var username = ""
+    @objc dynamic var username = ""
 
     let post = LinkingObjects(fromType: Post.self, property: "comments")
 //    let user = LinkingObjects(fromType: User.self, property: "users")

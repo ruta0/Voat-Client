@@ -9,14 +9,16 @@
 import Foundation
 import Alamofire
 
-protocol WebServiceDelegate {
+protocol WebServiceDelegate: NSObjectProtocol {
     func webServiceDidErr(error: Error)
     // posts
     func webServiceDidFetchPosts(posts: Any)
-    func webServiceDidCreatePost(post: NSDictionary)
-    func webServiceDidUpdatePost(post: NSDictionary)
+    func webServiceDidCreatePost(post: Any)
+    func webServiceDidUpdatePost(post: Any)
     func webServiceDidDeletePost()
     // user(s)
+    func webService(_ manager: WebServiceManager, didLogin user: User)
+    func webService(_ manager: WebServiceManager, didSignup user: User)
     // comments
     func webServiceDidFetchComments(comments: Any)
     // ...
@@ -25,18 +27,20 @@ protocol WebServiceDelegate {
 extension WebServiceDelegate {
     // posts
     func webServiceDidFetchPosts(posts: Any) {}
-    func webServiceDidCreatePost(post: NSDictionary) {}
-    func webServiceDidUpdatePost(post: NSDictionary) {}
+    func webServiceDidCreatePost(post: Any) {}
+    func webServiceDidUpdatePost(post: Any) {}
     func webServiceDidDeletePost() {}
     // user(s)
+    func webService(_ manager: WebServiceManager, didLogin user: User) {}
+    func webService(_ manager: WebServiceManager, didSignup user: User) {}
     // comments
     func webServiceDidFetchComments(comments: Any) {}
     // ...
 }
 
-class WebServerManager: NSObject {
+class WebServiceManager: NSObject {
 
-    var delegate: WebServiceDelegate?
+    weak var delegate: WebServiceDelegate?
 
     private func configureURL(endpoint: String) -> String {
         let url = WebServiceConfigurations.baseURL + endpoint
@@ -69,13 +73,15 @@ class WebServerManager: NSObject {
         }
     }
 
-    // MARK: - Create
-
     // MARK: - Update
 
     // MARK: - Delete
     
     // MARK: - Auth
+
+    @objc func login(endpoint: String, user: String, pass: String) {
+
+    }
     
     // ...
 
@@ -84,6 +90,7 @@ class WebServerManager: NSObject {
 struct WebServiceConfigurations {
 
     static let baseURL = "https://api.vid.me"
+    static let api_version = "1"
 
     struct endpoint {
         struct posts {

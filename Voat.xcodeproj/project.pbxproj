@@ -32,15 +32,16 @@
 		C587E1C61F50287B00CC7FF8 /* AlamofireImage.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C587E1BE1F50287B00CC7FF8 /* AlamofireImage.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		C587E1C71F50287B00CC7FF8 /* Locksmith.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C587E1BF1F50287B00CC7FF8 /* Locksmith.framework */; };
 		C587E1C81F50287B00CC7FF8 /* Locksmith.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C587E1BF1F50287B00CC7FF8 /* Locksmith.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		C587E1C91F50287B00CC7FF8 /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C587E1C01F50287B00CC7FF8 /* Realm.framework */; };
-		C587E1CA1F50287B00CC7FF8 /* Realm.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C587E1C01F50287B00CC7FF8 /* Realm.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		C587E1CB1F50287B00CC7FF8 /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C587E1C11F50287B00CC7FF8 /* RealmSwift.framework */; };
-		C587E1CC1F50287B00CC7FF8 /* RealmSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C587E1C11F50287B00CC7FF8 /* RealmSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		C587E1CD1F50287B00CC7FF8 /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C587E1C21F50287B00CC7FF8 /* SwiftyJSON.framework */; };
 		C587E1CE1F50287B00CC7FF8 /* SwiftyJSON.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C587E1C21F50287B00CC7FF8 /* SwiftyJSON.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		C587E1D41F5028C400CC7FF8 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = C587E1D31F5028C400CC7FF8 /* libz.tbd */; };
 		C587E1D61F5028CE00CC7FF8 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = C587E1D51F5028CE00CC7FF8 /* libsqlite3.tbd */; };
 		C587EB521F55996300459B2A /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C587EB511F55996300459B2A /* Settings.storyboard */; };
+		C59C84C01F5B420100FF26EF /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = C59C84BF1F5B420100FF26EF /* Session.swift */; };
+		C5EC4D011F7C76A400DBF675 /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C5EC4D001F7C769D00DBF675 /* Realm.framework */; };
+		C5EC4D021F7C76A400DBF675 /* Realm.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C5EC4D001F7C769D00DBF675 /* Realm.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		C5EC4D031F7C76A400DBF675 /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C5EC4CFF1F7C769D00DBF675 /* RealmSwift.framework */; };
+		C5EC4D041F7C76A400DBF675 /* RealmSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C5EC4CFF1F7C769D00DBF675 /* RealmSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -50,9 +51,9 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				C587E1CA1F50287B00CC7FF8 /* Realm.framework in Embed Frameworks */,
-				C587E1CC1F50287B00CC7FF8 /* RealmSwift.framework in Embed Frameworks */,
+				C5EC4D021F7C76A400DBF675 /* Realm.framework in Embed Frameworks */,
 				C587E1CE1F50287B00CC7FF8 /* SwiftyJSON.framework in Embed Frameworks */,
+				C5EC4D041F7C76A400DBF675 /* RealmSwift.framework in Embed Frameworks */,
 				C587E1C81F50287B00CC7FF8 /* Locksmith.framework in Embed Frameworks */,
 				C51CE5A51F53C863007463C1 /* FLAnimatedImage.framework in Embed Frameworks */,
 				C587E1C41F50287B00CC7FF8 /* Alamofire.framework in Embed Frameworks */,
@@ -87,13 +88,14 @@
 		C587E1BD1F50287B00CC7FF8 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
 		C587E1BE1F50287B00CC7FF8 /* AlamofireImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AlamofireImage.framework; path = Carthage/Build/iOS/AlamofireImage.framework; sourceTree = "<group>"; };
 		C587E1BF1F50287B00CC7FF8 /* Locksmith.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Locksmith.framework; path = Carthage/Build/iOS/Locksmith.framework; sourceTree = "<group>"; };
-		C587E1C01F50287B00CC7FF8 /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Realm.framework; path = Carthage/Build/iOS/Realm.framework; sourceTree = "<group>"; };
-		C587E1C11F50287B00CC7FF8 /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RealmSwift.framework; path = Carthage/Build/iOS/RealmSwift.framework; sourceTree = "<group>"; };
 		C587E1C21F50287B00CC7FF8 /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = Carthage/Build/iOS/SwiftyJSON.framework; sourceTree = "<group>"; };
 		C587E1D31F5028C400CC7FF8 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		C587E1D51F5028CE00CC7FF8 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 		C587E1DD1F50296600CC7FF8 /* Voat.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = Voat.entitlements; path = Voat/Voat.entitlements; sourceTree = "<group>"; };
 		C587EB511F55996300459B2A /* Settings.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Settings.storyboard; sourceTree = "<group>"; };
+		C59C84BF1F5B420100FF26EF /* Session.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
+		C5EC4CFF1F7C769D00DBF675 /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RealmSwift.framework; path = Carthage/Build/iOS/RealmSwift.framework; sourceTree = "<group>"; };
+		C5EC4D001F7C769D00DBF675 /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Realm.framework; path = Carthage/Build/iOS/Realm.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,10 +105,10 @@
 			files = (
 				C587E1D61F5028CE00CC7FF8 /* libsqlite3.tbd in Frameworks */,
 				C51CE5A41F53C863007463C1 /* FLAnimatedImage.framework in Frameworks */,
+				C5EC4D031F7C76A400DBF675 /* RealmSwift.framework in Frameworks */,
 				C587E1D41F5028C400CC7FF8 /* libz.tbd in Frameworks */,
-				C587E1C91F50287B00CC7FF8 /* Realm.framework in Frameworks */,
-				C587E1CB1F50287B00CC7FF8 /* RealmSwift.framework in Frameworks */,
 				C587E1CD1F50287B00CC7FF8 /* SwiftyJSON.framework in Frameworks */,
+				C5EC4D011F7C76A400DBF675 /* Realm.framework in Frameworks */,
 				C587E1C71F50287B00CC7FF8 /* Locksmith.framework in Frameworks */,
 				C587E1C31F50287B00CC7FF8 /* Alamofire.framework in Frameworks */,
 				C587E1C51F50287B00CC7FF8 /* AlamofireImage.framework in Frameworks */,
@@ -167,12 +169,12 @@
 		C587E1D21F5028C400CC7FF8 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				C5EC4D001F7C769D00DBF675 /* Realm.framework */,
+				C5EC4CFF1F7C769D00DBF675 /* RealmSwift.framework */,
 				C51CE5A31F53C863007463C1 /* FLAnimatedImage.framework */,
 				C587E1BD1F50287B00CC7FF8 /* Alamofire.framework */,
 				C587E1BE1F50287B00CC7FF8 /* AlamofireImage.framework */,
 				C587E1BF1F50287B00CC7FF8 /* Locksmith.framework */,
-				C587E1C01F50287B00CC7FF8 /* Realm.framework */,
-				C587E1C11F50287B00CC7FF8 /* RealmSwift.framework */,
 				C587E1C21F50287B00CC7FF8 /* SwiftyJSON.framework */,
 				C587E1D51F5028CE00CC7FF8 /* libsqlite3.tbd */,
 				C587E1D31F5028C400CC7FF8 /* libz.tbd */,
@@ -225,6 +227,7 @@
 			isa = PBXGroup;
 			children = (
 				C52340B31F51AB8D008F6960 /* User.swift */,
+				C59C84BF1F5B420100FF26EF /* Session.swift */,
 				C52340AB1F516E67008F6960 /* Post.swift */,
 				C52340AD1F516F53008F6960 /* Comment.swift */,
 			);
@@ -234,10 +237,10 @@
 		C587E1DC1F50294F00CC7FF8 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				C52340DB1F52A956008F6960 /* Constants.swift */,
 				C52340A71F5166BA008F6960 /* Utilities.swift */,
 				C52340AF1F5176DA008F6960 /* WebServiceManager.swift */,
 				C52340B11F51812F008F6960 /* RealmManager.swift */,
-				C52340DB1F52A956008F6960 /* Constants.swift */,
 			);
 			name = Helpers;
 			sourceTree = "<group>";
@@ -276,7 +279,7 @@
 				TargetAttributes = {
 					C587E1A71F4FE07800CC7FF8 = {
 						CreatedOnToolsVersion = 8.3.3;
-						DevelopmentTeam = ZLUJC28Y9H;
+						DevelopmentTeam = LUU7Q496SS;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.Keychain = {
@@ -347,6 +350,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C59C84C01F5B420100FF26EF /* Session.swift in Sources */,
 				C53A38841F53EC4700A388DD /* CommentCell.swift in Sources */,
 				C52340A81F5166BA008F6960 /* Utilities.swift in Sources */,
 				C52340B21F51812F008F6960 /* RealmManager.swift in Sources */,
@@ -486,7 +490,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Voat/Voat.entitlements;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = ZLUJC28Y9H;
+				DEVELOPMENT_TEAM = LUU7Q496SS;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
@@ -495,7 +499,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.rightmeow.voat;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.0;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Debug;
@@ -506,7 +510,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Voat/Voat.entitlements;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = ZLUJC28Y9H;
+				DEVELOPMENT_TEAM = LUU7Q496SS;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
@@ -515,7 +519,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.rightmeow.voat;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.0;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Release;

@@ -25,7 +25,7 @@ class PostCell: UITableViewCell {
             self.upvotesLabel.text = String(describing: post.upvotesCount)
             self.commentsLabel.text = String(describing: post.commentsCount)
             if !post.thumbnail_url.isEmpty {
-                self.postImageView.image = nil
+//                self.postImageView.image = nil
                 let imageCache = AutoPurgingImageCache(memoryCapacity: 100_000_000, preferredMemoryUsageAfterPurge: 60_000_000)
                 if let image = imageCache.image(withIdentifier: post.thumbnail_url) {
                     DispatchQueue.main.async {
@@ -102,6 +102,19 @@ class PostCell: UITableViewCell {
             self.backgroundColor = Color.midNightBlack
             self.postImageView.alpha = 1.0
         }
+    }
+
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        postTitleLabel.text = ""
+        userLabel.text = ""
+        dateLabel.text = ""
+        postImageView.image = nil
+        mediaTypeImageView.image = nil
+        upvoteImageView.image = nil
+        upvotesLabel.text = ""
+        commentImageView.image = nil
+        commentsLabel.text = ""
     }
 
 }

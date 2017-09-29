@@ -22,7 +22,7 @@ class PostsViewController: UIViewController, UITableViewDelegate, UITableViewDat
 
     // MARK: - UIRefreshControl
 
-    func handleRefresh() {
+    @objc func handleRefresh() {
         DispatchQueue.main.async {
             self.refreshControl?.beginRefreshing()
         }
@@ -65,7 +65,7 @@ class PostsViewController: UIViewController, UITableViewDelegate, UITableViewDat
 
     // MARK: - WebServiceDelegate
 
-    var webServiceManager: WebServerManager?
+    var webServiceManager: WebServiceManager?
 
     func webServiceDidErr(error: Error) {
         self.scheduleNavigationPrompt(message: error.localizedDescription, duration: 4)
@@ -101,7 +101,7 @@ class PostsViewController: UIViewController, UITableViewDelegate, UITableViewDat
     }
 
     private func setupWebServiceDelegate() {
-        webServiceManager = WebServerManager()
+        webServiceManager = WebServiceManager()
         webServiceManager!.delegate = self
     }
 
@@ -148,8 +148,6 @@ class PostsViewController: UIViewController, UITableViewDelegate, UITableViewDat
         setupWebServiceDelegate()
         setupPersistentContainerDelegate()
         webServiceManager?.fetchPosts(endpoint: WebServiceConfigurations.endpoint.posts.hot)
-
-//        print(realmManager?.pathForContainer())
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -186,7 +184,7 @@ class PostsViewController: UIViewController, UITableViewDelegate, UITableViewDat
     }
 
     func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 44
+        return 300
     }
 
 }

@@ -9,12 +9,17 @@
 import UIKit
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, PersistentContainerDelegate {
 
     var window: UIWindow?
 
+    func containerDidErr(error: Error) {
+        print(error.localizedDescription)
+    }
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+        let path = FileManager.default.pathToSandbox()
+        print(path)
         return true
     }
 

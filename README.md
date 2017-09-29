@@ -19,33 +19,33 @@ Voat iOS uses Carthage as package manager. You will need to have Carthage instal
 Step 1 - Navigate to your project directory
 
 ```
-cd {your-project-directory}
+$ cd {your-project-directory}
 ```
 
 Step 2 - Install project dependencies
 
 ```
-carthage checkout
+$ carthage checkout
 ```
 
 Step 3 - [optional]
 
-It's up to you to manage and update packages from this point onward. Just drag and drop them into Embeded Binary if you wish to apply updates.
+It's up to you to manage and update packages from this point onward. Just drag and drop them into Embedded Binary if you wish to apply updates.
 
 ## Versioning
 
-I use [agvtool](https://developer.apple.com/library/content/qa/qa1827/_index.html) for versioning. Voat iOS is currently running on version 1.0.0
+Voat iOS uses [agvtool](https://developer.apple.com/library/content/qa/qa1827/_index.html) for versioning. The latest version is 1.0.0
 
 ## Authors
 
-* **rightmeow**
+Voat unofficial client for iOS was originally created by [rightmeow](https://github.com/jinhedev/).
 
 See also the list of [contributors](CREDITS.md) who helped in this project.
 
 ## License
 
-This project is licensed under the Apache License Version 2.0 - see the [LICENSE](LICENSE) file for details
+This project is licensed under the Apache License Version 2.0 - see the [LICENSE](LICENSE) file for details.
 
 ## Acknowledgments
 
-* Hat tip to anyone who's code was used
+* Hat tip to anyone who's code was used.

@@ -11,10 +11,15 @@ import RealmSwift
 
 class User: Object {
 
-    dynamic var user_id = ""
-    dynamic var username = ""
-    dynamic var created_at = NSDate()
-    dynamic var updated_at = NSDate()
-    
+    @objc dynamic var user_id = ""
+    @objc dynamic var username = ""
+    @objc dynamic var created_at = NSDate()
+    @objc dynamic var updated_at = NSDate()
+
+    var sessions = List<Session>()
+
+    override static func primaryKey() -> String? {
+        return "user_id"
+    }
 
 }

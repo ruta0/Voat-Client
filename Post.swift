@@ -11,18 +11,18 @@ import RealmSwift
 
 class Post: Object {
 
-    dynamic var post_id = ""
-    dynamic var postTitle = ""
-    dynamic var postDescription = ""
-    dynamic var thumbnail_url = ""
-    dynamic var postImage_url = ""
-    dynamic var postVideo_url = "" // Video is not supported at the moment
-    dynamic var postGif_url = ""
-    dynamic var created_at = NSDate()
-    dynamic var updated_at = NSDate()
-    dynamic var upvotesCount: Int = 0
-    dynamic var commentsCount: Int = 0
-    dynamic var sharesCount: Int = 0
+    @objc dynamic var post_id = ""
+    @objc dynamic var postTitle = ""
+    @objc dynamic var postDescription = ""
+    @objc dynamic var thumbnail_url = ""
+    @objc dynamic var postImage_url = ""
+    @objc dynamic var postVideo_url = "" // Video is not supported at the moment
+    @objc dynamic var postGif_url = ""
+    @objc dynamic var created_at = NSDate()
+    @objc dynamic var updated_at = NSDate()
+    @objc dynamic var upvotesCount: Int = 0
+    @objc dynamic var commentsCount: Int = 0
+    @objc dynamic var sharesCount: Int = 0
 
     var comments = List<Comment>()
 //    var user = LinkingObjects(fromType: User.self, property: "posts")
