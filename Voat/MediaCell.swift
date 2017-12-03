@@ -26,6 +26,7 @@ class MediaCell: UITableViewCell {
 
     private func updateCell() {
         if let post = post {
+            self.userLabel.text = post.owner?.username
             self.postTitleLabel.text = post.postTitle
             self.dateLabel.text = post.created_at.toRelativeDate()
             self.upvotesLabel.text = String(describing: post.upvotesCount)
@@ -123,7 +124,7 @@ class MediaCell: UITableViewCell {
             case .success:
                 guard let data = response.result.value else {
                     DispatchQueue.main.async {
-                        self.postGifImageView.image = #imageLiteral(resourceName: "error")
+                        self.postGifImageView.image = #imageLiteral(resourceName: "error") // <<-- image literal
                         self.postGifImageView.contentMode = .center
                         self.mediaView.addSubview(self.postGifImageView)
                     }
@@ -136,7 +137,7 @@ class MediaCell: UITableViewCell {
             case .failure(let error):
                 print(error.localizedDescription)
                 DispatchQueue.main.async {
-                    self.postGifImageView.image = #imageLiteral(resourceName: "error")
+                    self.postGifImageView.image = #imageLiteral(resourceName: "error") // <<-- image literal
                     self.postGifImageView.contentMode = .center
                     self.mediaView.addSubview(self.postGifImageView)
                 }
@@ -185,6 +186,17 @@ class MediaCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         setupCell()
+    }
+
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        postTitleLabel.text?.removeAll()
+        userLabel.text?.removeAll()
+        dateLabel.text?.removeAll()
+        upvotesLabel.text?.removeAll()
+        commentsLabel.text?.removeAll()
+        sharesLabel.text?.removeAll()
+        postDescriptionLabel.text?.removeAll()
     }
 
 }

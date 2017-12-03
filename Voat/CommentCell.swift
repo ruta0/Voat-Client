@@ -18,6 +18,7 @@ class CommentCell: UITableViewCell {
 
     private func updateCell() {
         if let comment = comment {
+            self.userLabel.text = comment.owner?.username
             self.dateLabel.text = comment.created_at.toRelativeDate()
             self.commentDescriptionLabel.text = comment.text
             self.upvotesLabel.text = String(describing: comment.upvotesCount)
@@ -62,6 +63,14 @@ class CommentCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         setupCell()
+    }
+
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        self.userLabel.text?.removeAll()
+        self.dateLabel.text?.removeAll()
+        self.commentDescriptionLabel.text?.removeAll()
+        self.upvotesLabel.text?.removeAll()
     }
 
 }

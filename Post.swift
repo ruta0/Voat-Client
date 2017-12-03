@@ -8,6 +8,7 @@
 
 import Foundation
 import RealmSwift
+import SwiftyJSON
 
 class Post: Object {
 
@@ -23,12 +24,30 @@ class Post: Object {
     @objc dynamic var upvotesCount: Int = 0
     @objc dynamic var commentsCount: Int = 0
     @objc dynamic var sharesCount: Int = 0
-
+    @objc dynamic var owner: User?
     var comments = List<Comment>()
-//    var user = LinkingObjects(fromType: User.self, property: "posts")
 
     override static func primaryKey() -> String? {
         return "post_id"
+    }
+
+    convenience init(json: (String, JSON)) {
+        self.init()
+        let dict  = json.1["user"].dictionaryValue
+        self.owner = User(json: dict) // <<-- could be less verbose, but the backend...
+        self.post_id = json.1["video_id"].stringValue
+        self.thumbnail_url = json.1["thumbnail_url"].stringValue
+        self.postTitle = json.1["title"].stringValue
+        self.postDescription = json.1["description"].stringValue
+        self.commentsCount = json.1["comment_count"].intValue
+        self.created_at = json.1["date_created"].stringValue.toSystemDate()
+        self.updated_at = json.1["date_stored"].stringValue.toSystemDate()
+        self.upvotesCount = json.1["likes_count"].intValue
+        self.sharesCount = json.1["share_count"].intValue
+        self.postImage_url = json.1["thumbnail_url"].stringValue
+        self.postVideo_url = json.1["complete_url"].stringValue
+        self.postGif_url = json.1["thumbnail_gif_url"].stringValue
+        print(self)
     }
 
     convenience init(post_id: String, postTitle: String, thumbnail_url: String, postImage_url: String, postVideo_url: String, postGif_url: String, created_at: NSDate, updated_at: NSDate, postDescription: String, upvotesCount: Int, commentsCount: Int, sharesCount: Int, comments: List<Comment>) {

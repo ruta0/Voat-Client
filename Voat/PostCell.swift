@@ -20,12 +20,12 @@ class PostCell: UITableViewCell {
 
     private func updateCell() {
         if let post = post {
+            self.userLabel.text = post.owner?.username
             self.postTitleLabel.text = post.postTitle
             self.dateLabel.text = post.created_at.toRelativeDate()
             self.upvotesLabel.text = String(describing: post.upvotesCount)
             self.commentsLabel.text = String(describing: post.commentsCount)
             if !post.thumbnail_url.isEmpty {
-//                self.postImageView.image = nil
                 let imageCache = AutoPurgingImageCache(memoryCapacity: 100_000_000, preferredMemoryUsageAfterPurge: 60_000_000)
                 if let image = imageCache.image(withIdentifier: post.thumbnail_url) {
                     DispatchQueue.main.async {
@@ -42,7 +42,7 @@ class PostCell: UITableViewCell {
                                 print("failed to parse image from response")
                                 return
                             }
-                            self.postImageView.af_setImage(withURL: URL(string: post.thumbnail_url)!, placeholderImage: #imageLiteral(resourceName: "Image Placeholder"))
+                            self.postImageView.af_setImage(withURL: URL(string: post.thumbnail_url)!, placeholderImage: #imageLiteral(resourceName: "Image Placeholder")) // <<-- find a better placeholder image
                             imageCache.add(image, withIdentifier: post.thumbnail_url)
                             self.postImageView.image = image
                             self.postImageView.fadeIn()
@@ -106,15 +106,12 @@ class PostCell: UITableViewCell {
 
     override func prepareForReuse() {
         super.prepareForReuse()
-        postTitleLabel.text = ""
-        userLabel.text = ""
-        dateLabel.text = ""
         postImageView.image = nil
-        mediaTypeImageView.image = nil
-        upvoteImageView.image = nil
-        upvotesLabel.text = ""
-        commentImageView.image = nil
-        commentsLabel.text = ""
+        postTitleLabel.text?.removeAll()
+        userLabel.text?.removeAll()
+        dateLabel.text?.removeAll()
+        upvotesLabel.text?.removeAll()
+        commentsLabel.text?.removeAll()
     }
 
 }

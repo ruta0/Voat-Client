@@ -18,7 +18,8 @@ class PostViewController: UIViewController, UITableViewDelegate, UITableViewData
 
     var realmComments: Results<Comment>? {
         didSet {
-            self.tableViewReload() // reload the section == 1 only
+            let sections = IndexSet(integer: 1)
+            self.tableView.reloadSections(sections, with: UITableViewRowAnimation.automatic)
         }
     }
 
@@ -55,17 +56,12 @@ class PostViewController: UIViewController, UITableViewDelegate, UITableViewData
         self.scheduleNavigationPrompt(message: error.localizedDescription, duration: 4)
     }
 
+    // refactor this into Comment.swift
     func webServiceDidFetchComments(comments: Any) {
         var realmComments = [Comment]()
         let jsonComments = JSON(comments)["comments"]
         for jsonComment in jsonComments {
-            let realmComment = Comment()
-            realmComment.comment_id = jsonComment.1["comment_id"].stringValue
-            realmComment.text = jsonComment.1["body"].stringValue
-            realmComment.created_at = jsonComment.1["date_created"].stringValue.toSystemDate()
-            realmComment.updated_at = jsonComment.1["date_created"].stringValue.toSystemDate()
-            realmComment.commentsCount = jsonComment.1["comment_count"].intValue
-            realmComment.upvotesCount = jsonComment.1["score"].intValue
+            let realmComment = Comment(json: jsonComment)
             realmComments.append(realmComment)
         }
         realmManager?.updateObjects(objects: realmComments)
