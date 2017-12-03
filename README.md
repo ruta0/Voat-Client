@@ -28,14 +28,6 @@ Step 2 - Install project dependencies
 $ carthage checkout
 ```
 
-Step 3 - [optional]
-
-It's up to you to manage and update packages from this point onward. Just drag and drop them into Embedded Binary if you wish to apply updates.
-
-## Versioning
-
-Voat iOS uses [agvtool](https://developer.apple.com/library/content/qa/qa1827/_index.html) for versioning. The latest version is 1.0.0
-
 ## Authors
 
 Voat unofficial client for iOS was originally created by [rightmeow](https://github.com/jinhedev/).
